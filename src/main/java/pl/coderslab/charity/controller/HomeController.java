@@ -36,4 +36,9 @@ public class HomeController {
     public int getBags() {
         return donationService.getBagQuantity();
     }
+
+    @ModelAttribute("donations")
+    public int getDonations() {
+        return donationService.getDonationQuantity();
+    }
 }

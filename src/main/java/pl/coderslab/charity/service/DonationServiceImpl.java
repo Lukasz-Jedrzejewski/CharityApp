@@ -25,4 +25,10 @@ public class DonationServiceImpl implements DonationService {
         }
         return bags;
     }
+
+    @Override
+    public int getDonationQuantity() {
+        int donations = donationRepository.findAll().size();
+        return donations;
+    }
 }
