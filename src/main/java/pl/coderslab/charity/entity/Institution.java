@@ -12,7 +12,7 @@ public class Institution {
     private Long id;
     private String name;
     private String description;
-    @OneToMany
+    @OneToMany(mappedBy = "institution")
     private List<Donation> donations;
 
     public Institution() {

@@ -12,7 +12,7 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantity;
-    @ManyToMany
+    @ManyToMany(mappedBy = "donations")
     private Set<Category> categories;
     @ManyToOne
     private Institution institution;
