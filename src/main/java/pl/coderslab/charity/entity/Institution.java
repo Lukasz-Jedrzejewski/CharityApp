@@ -56,7 +56,6 @@ public class Institution {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", donations=" + donations +
                 '}';
     }
 }

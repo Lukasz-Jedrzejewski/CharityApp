@@ -120,8 +120,6 @@ public class Donation {
         return "Donation{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", categories=" + categories +
-                ", institution=" + institution +
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", zipCode='" + zipCode + '\'' +
