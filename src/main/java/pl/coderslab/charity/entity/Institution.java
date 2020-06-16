@@ -1,6 +1,8 @@
 package pl.coderslab.charity.entity;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "institution")
@@ -10,8 +12,18 @@ public class Institution {
     private Long id;
     private String name;
     private String description;
+    @OneToMany
+    private List<Donation> donations;
 
     public Institution() {
+    }
+
+    public List<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
     }
 
     public Long getId() {
@@ -44,6 +56,7 @@ public class Institution {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", donations=" + donations +
                 '}';
     }
 }

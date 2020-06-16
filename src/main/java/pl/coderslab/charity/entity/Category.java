@@ -1,6 +1,7 @@
 package pl.coderslab.charity.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "category")
@@ -9,12 +10,22 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @ManyToMany
+    private Set<Donation> donations;
 
     public Category() {
     }
 
     public Long getId() {
         return id;
+    }
+
+    public Set<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(Set<Donation> donations) {
+        this.donations = donations;
     }
 
     public void setId(Long id) {
@@ -34,6 +45,7 @@ public class Category {
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", donations=" + donations +
                 '}';
     }
 }
