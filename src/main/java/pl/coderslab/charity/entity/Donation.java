@@ -1,8 +1,11 @@
 package pl.coderslab.charity.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,12 +16,13 @@ public class Donation {
     private Long id;
     private Integer quantity;
     @ManyToMany(mappedBy = "donations")
-    private Set<Category> categories;
+    private List<Category> categories;
     @ManyToOne
     private Institution institution;
     private String street;
     private String city;
     private String zipCode;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpComment;
@@ -43,11 +47,11 @@ public class Donation {
         this.quantity = quantity;
     }
 
-    public Set<Category> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<Category> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 
