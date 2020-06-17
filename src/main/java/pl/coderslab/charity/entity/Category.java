@@ -1,7 +1,7 @@
 package pl.coderslab.charity.entity;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "category")
@@ -11,7 +11,7 @@ public class Category {
     private Long id;
     private String name;
     @ManyToMany
-    private Set<Donation> donations;
+    private List<Donation> donations;
 
     public Category() {
     }
@@ -20,16 +20,16 @@ public class Category {
         return id;
     }
 
-    public Set<Donation> getDonations() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Donation> getDonations() {
         return donations;
     }
 
-    public void setDonations(Set<Donation> donations) {
+    public void setDonations(List<Donation> donations) {
         this.donations = donations;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
