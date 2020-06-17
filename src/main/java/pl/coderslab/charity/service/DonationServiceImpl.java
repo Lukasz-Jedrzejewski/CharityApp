@@ -31,4 +31,9 @@ public class DonationServiceImpl implements DonationService {
         int donations = donationRepository.findAll().size();
         return donations;
     }
+
+    @Override
+    public void save(Donation donation) {
+        donationRepository.save(donation);
+    }
 }

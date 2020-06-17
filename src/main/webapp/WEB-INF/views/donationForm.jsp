@@ -85,7 +85,7 @@
                 <div class="form-group form-group--checkbox">
                     <label>
                         <input type="checkbox" name="categories" value="${category.id}"/>
-                        <span class="checkbox"></span>
+                        <span class="checkbox">${donation.categories}</span>
                         <span class="description">${category.name}</span>
                     </label>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1" />
+                        <input type="number" name="${donation.quantity}" step="1" min="1" />
                     </label>
                 </div>
 
@@ -118,34 +118,21 @@
             <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-
+                <c:forEach items="${institutions}" var="institution">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="radio" name="organization" value="old" />
+                        <form:radiobutton path="institution" value="${institution.id}"/>
+<%--                        <input type="radio" name="${donation.institution}" value="${institution.id}" />--%>
                         <span class="checkbox radio"></span>
                         <span class="description">
-                  <div class="title">Fundacja “Bez domu”</div>
+                  <div class="title">${institution.name}</div>
                   <div class="subtitle">
-                    Cel i misja: Pomoc dla osób nie posiadających miejsca
-                    zamieszkania
+                      ${institution.description}
                   </div>
                 </span>
                     </label>
                 </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" name="organization" value="old" />
-                        <span class="checkbox radio"></span>
-                        <span class="description">
-                  <div class="title">Fundacja “Dla dzieci"</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji
-                    życiowej.
-                  </div>
-                </span>
-                    </label>
-                </div>
+                </c:forEach>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
