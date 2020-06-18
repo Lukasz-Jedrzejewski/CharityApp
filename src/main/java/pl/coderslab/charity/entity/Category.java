@@ -10,7 +10,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToMany
+    @ManyToMany(targetEntity = Donation.class, cascade = CascadeType.ALL)
     private List<Donation> donations;
 
     public Category() {

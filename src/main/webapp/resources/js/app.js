@@ -163,7 +163,20 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
-      // TODO: get data from inputs and show them in summary
+      // const ul = document.querySelector(".form-section form-section--columns");
+      // console.log(ul);
+      const summary = document.querySelector(".summary").firstElementChild.nextElementSibling;
+      console.log(summary);
+      let ul1 = summary.firstElementChild.querySelector("ul");
+      console.log(ul1);
+      ul1.firstElementChild.innerHTML = "aaa";
+      ul1.firstElementChild.nextElementSibling.innerHTML = "bbb";
+      ul1.firstElementChild.nextElementSibling.nextElementSibling.innerHTML = "ccc";
+      ul1.lastElementChild.innerHTML = "mać";
+      let ul2 = summary.lastElementChild.querySelector("ddd");
+      ul2.firstElementChild.innerHTML = "111";
+      ul2.firstElementChild.nextElementSibling.innerHTML = "222";
+      ul2.lastElementChild.innerHTML = "333";
     }
 
   }

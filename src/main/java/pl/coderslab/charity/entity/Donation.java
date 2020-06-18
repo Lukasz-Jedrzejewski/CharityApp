@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "donation")
@@ -15,7 +14,7 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantity;
-    @ManyToMany(mappedBy = "donations")
+    @ManyToMany(mappedBy = "donations", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Category> categories;
     @ManyToOne
     private Institution institution;
