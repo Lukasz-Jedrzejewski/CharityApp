@@ -150,8 +150,6 @@ document.addEventListener("DOMContentLoaded", function() {
     updateForm() {
       this.$step.innerText = this.currentStep;
 
-      // TODO: Validation
-
       this.slides.forEach(slide => {
         slide.classList.remove("active");
 
@@ -163,20 +161,49 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
-      // const ul = document.querySelector(".form-section form-section--columns");
-      // console.log(ul);
-      const summary = document.querySelector(".summary").firstElementChild.nextElementSibling;
-      console.log(summary);
-      let ul1 = summary.firstElementChild.querySelector("ul");
-      console.log(ul1);
-      ul1.firstElementChild.innerHTML = "aaa";
-      ul1.firstElementChild.nextElementSibling.innerHTML = "bbb";
-      ul1.firstElementChild.nextElementSibling.nextElementSibling.innerHTML = "ccc";
-      ul1.lastElementChild.innerHTML = "mać";
-      let ul2 = summary.lastElementChild.querySelector("ddd");
-      ul2.firstElementChild.innerHTML = "111";
-      ul2.firstElementChild.nextElementSibling.innerHTML = "222";
-      ul2.lastElementChild.innerHTML = "333";
+      /**
+       * collecting form data
+       */
+      const summary = document.querySelector(".summary").firstElementChild;
+
+      const summaryBags = summary.querySelectorAll(".summary--text")[0];
+      console.log(summaryBags);
+      const bagsData = document.querySelector('[name="quantity"]');
+      // const bagsContent = document.querySelector('[name="categories"]')
+      summaryBags.innerHTML = bagsData.value + " worki ";
+
+      const summaryInstitution = summary.querySelectorAll(".summary--text")[1];
+      console.log(summaryInstitution);
+      const institutionData = document.querySelector('[name="institution"]');
+      summaryInstitution.innerHTML = "Dla fundacji " + institutionData.dataset.name;
+
+
+      let ul1 = summary.nextElementSibling.firstElementChild.querySelector("ul");
+
+      const streetData = document.querySelector('[name="street"]');
+      ul1.firstElementChild.innerHTML = streetData.value;
+
+      const cityData = document.querySelector('[name="city"]');
+      ul1.firstElementChild.nextElementSibling.innerHTML = cityData.value;
+
+      const zipCodeData = document.querySelector('[name="zipCode"]');
+      ul1.firstElementChild.nextElementSibling.nextElementSibling.innerHTML = zipCodeData.value;
+
+      const phoneData = document.querySelector('[name="phoneNumber"]');
+      ul1.lastElementChild.innerHTML = phoneData.value;
+
+      let ul2 = summary.nextElementSibling.lastElementChild.querySelector("ul");
+
+      const dateData = document.querySelector('[name="pickUpDate"]');
+      ul2.firstElementChild.innerHTML = dateData.value;
+
+      const timeData = document.querySelector('[name="pickUpTime"]');
+      ul2.firstElementChild.nextElementSibling.innerHTML = timeData.value;
+
+      const commentData = document.querySelector('[name="pickUpComment"]');
+      ul2.lastElementChild.innerHTML = commentData.value;
+
+
     }
 
   }

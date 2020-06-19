@@ -14,7 +14,7 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantity;
-    @ManyToMany(mappedBy = "donations", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @ManyToMany
     private List<Category> categories;
     @ManyToOne
     private Institution institution;

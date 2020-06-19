@@ -10,8 +10,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToMany(targetEntity = Donation.class, cascade = CascadeType.ALL)
-    private List<Donation> donations;
+
 
     public Category() {
     }
@@ -24,13 +23,7 @@ public class Category {
         this.id = id;
     }
 
-    public List<Donation> getDonations() {
-        return donations;
-    }
 
-    public void setDonations(List<Donation> donations) {
-        this.donations = donations;
-    }
 
     public String getName() {
         return name;
@@ -45,7 +38,6 @@ public class Category {
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", donations=" + donations +
                 '}';
     }
 }
