@@ -169,12 +169,11 @@ document.addEventListener("DOMContentLoaded", function() {
       const summaryBags = summary.querySelectorAll(".summary--text")[0];
       console.log(summaryBags);
       const bagsData = document.querySelector('[name="quantity"]');
-      // const bagsContent = document.querySelector('[name="categories"]')
-      summaryBags.innerHTML = bagsData.value + " worki ";
+      summaryBags.innerHTML = bagsData.value + " worki";
 
       const summaryInstitution = summary.querySelectorAll(".summary--text")[1];
       console.log(summaryInstitution);
-      const institutionData = document.querySelector('[name="institution"]');
+      const institutionData = document.querySelector('[name="institution"]:checked');
       summaryInstitution.innerHTML = "Dla fundacji " + institutionData.dataset.name;
 
 
