@@ -33,7 +33,7 @@ public class HomeController {
     }
 
     @ModelAttribute("bags")
-    public int getBags() {
+    public Integer getBags() {
         return donationService.getBagQuantity();
     }
 

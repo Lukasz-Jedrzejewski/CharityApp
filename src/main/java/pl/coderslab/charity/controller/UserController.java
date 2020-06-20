@@ -25,8 +25,8 @@ public class UserController {
         return "register";
     }
 
-    @PostMapping("/register")
-    public String addUser(@ModelAttribute User user) {
-
-    }
+//    @PostMapping("/register")
+//    public String addUser(@ModelAttribute User user) {
+//
+//    }
 }
