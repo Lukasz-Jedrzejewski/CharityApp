@@ -27,7 +27,11 @@ public class UserController {
 
     @PostMapping("/register")
     public String addUser(@ModelAttribute User user) {
-        userService.saveUser(user);
+        if (user.getPassword2().equals(user.getPassword())) {
+            userService.saveUser(user);
+        } else {
+            return "passInvalid";
+        }
         return "redirect:/";
     }
 }
