@@ -9,7 +9,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
-    private int enabled;
+    private String firstName;
+    private String lastName;
+    private boolean enabled;
     private String password;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -38,11 +40,27 @@ public class User {
         this.email = email;
     }
 
-    public int getEnabled() {
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(int enabled) {
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
