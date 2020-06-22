@@ -1,11 +1,15 @@
 package pl.coderslab.charity.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.fixture.InitData;
+import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.service.DonationServiceImpl;
 import pl.coderslab.charity.service.InstitutionServiceImpl;
 
@@ -44,5 +48,20 @@ public class HomeController {
     @ModelAttribute("donations")
     public int getDonations() {
         return donationService.getDonationQuantity();
+    }
+
+//    @GetMapping("/login")
+//    public String getLogin() {
+//        return "login";
+//    }
+
+    @GetMapping("/about")
+    public String login(@AuthenticationPrincipal CurrentUser currentUser) {
+        if (currentUser.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+            return "redirect:/admin/panel";
+        } else if (currentUser.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"))) {
+            return "redirect:/user/panel";
+        }
+        return null;
     }
 }
