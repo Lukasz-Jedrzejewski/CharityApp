@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,17 +15,21 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                ${admin.username}
+                <sec:authorize access="isAuthenticated()">
+                    ${user.email}
+                </sec:authorize>
                 <ul class="dropdown">
                     <li><a href="/admin/institutions">Zarządzaj fundacjami</a></li>
                     <li><a href="/admin/administrators">Zarządzaj administratorami</a></li>
                     <li><a href="/admin/users">Zarządzaj użytkownikami</a></li>
                     <li>
                         <nav>
-                            <form action="<c:url value="/logout"/>" method="post">
-                                <input type="submit" value="Wyloguj">
-                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            </form>
+                            <sec:authorize access="isAuthenticated()">
+                                <form action="<c:url value="/logout"/>" method="post">
+                                    <input type="submit" value="Wyloguj">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                </form>
+                            </sec:authorize>
                         </nav
                         >
                     </li>
