@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.Institution;
-import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.fixture.InitData;
 import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.service.DonationServiceImpl;
@@ -55,7 +54,7 @@ public class HomeController {
     public String getLogin() {
         return "login";
     }
-
+//
 //    @GetMapping("/about")
 //    public String login(@AuthenticationPrincipal CurrentUser currentUser) {
 //        if (currentUser.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {

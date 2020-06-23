@@ -1,6 +1,5 @@
 package pl.coderslab.charity.model;
 
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
@@ -14,7 +13,9 @@ public class CurrentUser extends User {
         super(email, password, authorities);
         this.user = user;
     }
-    public pl.coderslab.charity.entity.User getUser() {return user;}
+    public pl.coderslab.charity.entity.User getUser() {
+        return user;
+    }
 
 
 }

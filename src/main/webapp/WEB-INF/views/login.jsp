@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <%@include file="header.jsp"%>
@@ -22,9 +23,9 @@
 
 <section class="login-page">
     <h2>Zaloguj się</h2>
-    <form action="/login">
+    <form action="/login" method="post">
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
+            <input type="email" name="username" placeholder="Email" />
         </div>
         <div class="form-group">
             <input type="password" name="password" placeholder="Hasło" />

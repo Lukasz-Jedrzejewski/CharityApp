@@ -4,7 +4,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
@@ -20,7 +19,7 @@ public class AdminController {
         this.userService = userService;
     }
 
-    @PostMapping("/panel")
+    @GetMapping("/panel")
     public String loginPage(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
         User user = currentUser.getUser();
         model.addAttribute("user", user);

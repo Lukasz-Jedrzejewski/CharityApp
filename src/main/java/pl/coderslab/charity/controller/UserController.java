@@ -34,7 +34,7 @@ public class UserController {
         } else {
             return "passInvalid";
         }
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/panel")
