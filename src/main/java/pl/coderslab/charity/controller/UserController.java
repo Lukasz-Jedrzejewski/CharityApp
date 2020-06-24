@@ -41,6 +41,6 @@ public class UserController {
     public String loginPage(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
         User user = currentUser.getUser();
         model.addAttribute("user", user);
-        return "panel";
+        return "/user/panel";
     }
 }

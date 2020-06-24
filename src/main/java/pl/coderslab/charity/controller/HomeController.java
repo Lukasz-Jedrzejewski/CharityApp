@@ -54,14 +54,5 @@ public class HomeController {
     public String getLogin() {
         return "login";
     }
-//
-//    @GetMapping("/about")
-//    public String login(@AuthenticationPrincipal CurrentUser currentUser) {
-//        if (currentUser.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
-//            return "redirect:/admin/panel";
-//        } else if (currentUser.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"))) {
-//            return "redirect:/user/panel";
-//        }
-//        return null;
-//    }
+
 }
