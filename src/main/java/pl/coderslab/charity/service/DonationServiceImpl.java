@@ -5,7 +5,7 @@ import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.interfaces.DonationService;
 import pl.coderslab.charity.repository.DonationRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DonationServiceImpl implements DonationService {
@@ -17,18 +17,18 @@ public class DonationServiceImpl implements DonationService {
     }
 
     @Override
-    public int getBagQuantity() {
-        int bags = 0;
-        List<Donation> allBags = donationRepository.findAll();
-        for (Donation bag : allBags) {
-            bags += bag.getQuantity();
+    public Integer getBagQuantity() {
+        Optional<Integer> bags = donationRepository.getBagQuantity();
+        if (bags.isPresent()) {
+            return bags.get();
+        } else {
+            return 0;
         }
-        return bags;
     }
 
     @Override
     public int getDonationQuantity() {
-        int donations = donationRepository.findAll().size();
+        int donations = donationRepository.getDonationQuantity();
         return donations;
     }
 

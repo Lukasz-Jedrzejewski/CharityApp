@@ -5,16 +5,6 @@
 <body>
 <header class="header--form-page">
     <nav class="container container--70">
-        <ul class="nav--actions">
-            <li class="logged-user">
-                Witaj Agata
-                <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
-                </ul>
-            </li>
-        </ul>
 
         <ul>
             <li><a href="/" class="btn btn--without-border active">Start</a></li>
@@ -27,8 +17,10 @@
 
     <div class="slogan container container--90">
         <h2>
-            Dziękujemy za przesłanie formularza Na maila prześlemy wszelkie
-            informacje o odbiorze.
+            Hasła muszą być identyczne!
+            <div class="form-group form-group--buttons">
+                <button type="button" class="btn prev-step" onclick="history.back()">Wstecz</button>
+            </div>
         </h2>
     </div>
 </header>
