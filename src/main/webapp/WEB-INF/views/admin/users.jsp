@@ -10,22 +10,23 @@
         <div class="help--slides active" data-id="1">
             <ul class="help--slides-items">
                     <li>
-                        <c:forEach items="${adminList}" var="admin" varStatus="status">
+                        <c:forEach items="${userList}" var="user" varStatus="status">
                         <div class="col">
-                            <div class="title">Nazwa: ${admin.firstName} : ${admin.lastName}</div>
-                            <div class="subtitle">Mail: ${admin.email} aktywny: ${admin.enabled}</div>
+                            <div class="title">Nazwa: ${user.firstName} : ${user.lastName}</div>
+                            <div class="subtitle">Mail: ${user.email} aktywny: ${user.enabled}</div>
                             <div>
-                                <a href="/admin/admin-add/${admin.id}"
+                                <a href="/admin/user-add/${user.id}"
                                    class="btn btn--without-border active">Edycja</a>
-                                <a href="/admin/admin-delete/${admin.id}"
+                                <a href="/admin/user-delete/${user.id}"
                                    class="btn btn--without-border active">Usuwanie</a>
+                                <a href="/admin/user-enabled/${user.id}"
+                                   class="btn btn--without-border active">Aktywacja</a>
+                                <a href="/admin/user-disabled/${user.id}"
+                                   class="btn btn--without-border active">Deaktywacja</a>
                             </div>
                         </div>
                         </c:forEach>
                     </li>
-                <li>
-                    <div class="btn"><a href="/admin/admin-add">Dodaj admina</a></div>
-                </li>
             </ul>
         </div>
     </section>

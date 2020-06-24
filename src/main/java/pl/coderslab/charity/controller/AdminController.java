@@ -104,4 +104,47 @@ public class AdminController {
         userService.saveAdmin(admin);
         return "redirect:/admin/admin-list";
     }
+
+    @GetMapping("/user-list")
+    public String userList(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
+        model.addAttribute("userList", userService.findAllUsers());
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/users";
+    }
+
+    @GetMapping("/user-delete/{id}")
+    public String userDelete(@PathVariable long id) {
+        roleService.deleteByUserId(id);
+        userService.delete(id);
+        return "redirect:/admin/user-list";
+    }
+
+    @GetMapping("/user-add/{id}")
+    public String userEdit(@AuthenticationPrincipal CurrentUser currentUser, Model model, @PathVariable long id) {
+        model.addAttribute("userToEdit", userService.getOne(id));
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/user-form";
+    }
+
+    @PostMapping("/user-add")
+    public String saveUser(@ModelAttribute("userToEdit") User user) {
+        userService.saveUser(user);
+        return "redirect:/admin/user-list";
+    }
+
+    @GetMapping("/user-enabled/{id}")
+    public String enableUser(@PathVariable long id) {
+        User user = userService.getOne(id);
+        userService.changeEnabled(user);
+        return "redirect:/admin/user-list";
+    }
+
+    @GetMapping("/user-disabled/{id}")
+    public String disableUser(@PathVariable long id) {
+        User user = userService.getOne(id);
+        userService.changeDisabled(user);
+        return "redirect:/admin/user-list";
+    }
 }

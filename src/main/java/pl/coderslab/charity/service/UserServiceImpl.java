@@ -74,4 +74,21 @@ public class UserServiceImpl implements UserService {
     public User getOne(long id) {
         return userRepository.getOne(id);
     }
+
+    @Override
+    public List<User> findAllUsers() {
+        return userRepository.findAllByRoleUserCustomQuery();
+    }
+
+    @Override
+    public void changeEnabled(User user) {
+        user.setEnabled(true);
+        userRepository.save(user);
+    }
+
+    @Override
+    public void changeDisabled(User user) {
+        user.setEnabled(false);
+        userRepository.save(user);
+    }
 }

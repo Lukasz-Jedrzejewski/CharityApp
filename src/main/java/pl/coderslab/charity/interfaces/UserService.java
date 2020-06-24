@@ -12,4 +12,7 @@ public interface UserService {
     List<User> findAllAdministrators();
     void delete(long id);
     User getOne(long id);
+    List<User> findAllUsers();
+    void changeEnabled(User user);
+    void changeDisabled(User user);
 }
