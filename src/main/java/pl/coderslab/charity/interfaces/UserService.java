@@ -15,4 +15,6 @@ public interface UserService {
     List<User> findAllUsers();
     void changeEnabled(User user);
     void changeDisabled(User user);
+    void editUser(User user);
+    void changePass(User user);
 }

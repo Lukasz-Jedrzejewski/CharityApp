@@ -3,10 +3,7 @@ package pl.coderslab.charity.controller;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.service.UserServiceImpl;
@@ -42,5 +39,33 @@ public class UserController {
         User user = currentUser.getUser();
         model.addAttribute("user", user);
         return "/user/panel";
+    }
+
+    @GetMapping("/user-edit/{id}")
+    public String editProfile(@AuthenticationPrincipal CurrentUser currentUser, @PathVariable Long id, Model model){
+        model.addAttribute("userToEdit", userService.getOne(id));
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/user/user-form";
+    }
+
+    @PostMapping("/user-edit")
+    public String editProfile(@ModelAttribute("userToEdit") User user){
+        userService.editUser(user);
+        return "redirect:/user/panel";
+    }
+
+    @GetMapping("/edit-pass/{id}")
+    public String changePassword(@AuthenticationPrincipal CurrentUser currentUser, @PathVariable Long id,Model model){
+        model.addAttribute("userPass", userService.getOne(id));
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/user/pass-change";
+    }
+
+    @PostMapping("/edit-pass")
+    public String changePassword(@ModelAttribute User user){
+        userService.changePass(user);
+        return "redirect:/user/panel";
     }
 }

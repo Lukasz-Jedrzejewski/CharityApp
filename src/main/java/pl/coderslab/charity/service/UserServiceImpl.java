@@ -91,4 +91,25 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(false);
         userRepository.save(user);
     }
+
+    @Override
+    public void editUser(User user) {
+        User userDb = userRepository.getOne(user.getId());
+        user.setEnabled(userDb.isEnabled());
+        user.setRoles(userDb.getRoles());
+        user.setPassword(userDb.getPassword());
+        userRepository.save(user);
+    }
+
+    @Override
+    public void changePass(User user) {
+        User userDb = userRepository.getOne(user.getId());
+        user.setEnabled(userDb.isEnabled());
+        user.setRoles(userDb.getRoles());
+        user.setFirstName(userDb.getFirstName());
+        user.setLastName(userDb.getLastName());
+        user.setEmail(userDb.getEmail());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
 }
