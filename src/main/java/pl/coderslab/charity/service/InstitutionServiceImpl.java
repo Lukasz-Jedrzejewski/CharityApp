@@ -20,4 +20,19 @@ public class InstitutionServiceImpl implements InstitutionService {
     public List<Institution> findAll() {
         return institutionRepository.findAll();
     }
+
+    @Override
+    public void delete(long id) {
+        institutionRepository.delete(getOne(id));
+    }
+
+    @Override
+    public Institution getOne(long id) {
+        return institutionRepository.getOne(id);
+    }
+
+    @Override
+    public void save(Institution institution) {
+        institutionRepository.save(institution);
+    }
 }
