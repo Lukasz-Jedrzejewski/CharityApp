@@ -29,7 +29,7 @@
     <ul>
         <li><a href="/" class="btn btn--without-border active">Start</a></li>
         <li><a href="/admin/institution-list" class="btn btn--without-border">Instytucje</a></li>
-        <li><a href="/admin/admins-list" class="btn btn--without-border">Administratorzy</a></li>
+        <li><a href="/admin/admin-list" class="btn btn--without-border">Administratorzy</a></li>
         <li><a href="/admin/users-list" class="btn btn--without-border">Użytkownicy</a></li>
     </ul>
 </nav>

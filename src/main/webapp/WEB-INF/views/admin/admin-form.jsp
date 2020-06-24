@@ -9,17 +9,19 @@
     <%@include file="admin-menu.jsp" %>
     <section class="login-page">
         <h2>Wpisz dane</h2>
-        <form:form action="/admin/institution-add" method="post" modelAttribute="institution">
+        <form:form action="/admin/admin-add" method="post" modelAttribute="admin">
             <form:hidden path="id"/>
-            <div class="form-group form-group--inline">
-                <label>
-                    Nazwa fundacji: <form:input path="name"/>
-                </label>
+            <div class="form-group">
+                <form:input path="firstName" placeholder="first name" />
             </div>
-            <div class="form-group form-group--inline">
-                <label>
-                    Opis fundacji: <form:textarea path="description"/>
-                </label>
+            <div class="form-group">
+                <form:input path="lastName" placeholder="last name" />
+            </div>
+            <div class="form-group">
+                <form:input path="email" placeholder="Email" />
+            </div>
+            <div class="form-group">
+                <form:password path="password" placeholder="Hasło" />
             </div>
             <div class="form-group form-group--buttons">
                 <button type="submit" class="btn">Potwierdzam</button>

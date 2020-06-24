@@ -8,9 +8,8 @@ import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.service.InstitutionServiceImpl;
+import pl.coderslab.charity.service.RoleServiceImpl;
 import pl.coderslab.charity.service.UserServiceImpl;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -18,10 +17,12 @@ public class AdminController {
 
     private UserServiceImpl userService;
     private InstitutionServiceImpl institutionService;
+    private RoleServiceImpl roleService;
 
-    public AdminController(UserServiceImpl userService, InstitutionServiceImpl institutionService) {
+    public AdminController(UserServiceImpl userService, InstitutionServiceImpl institutionService, RoleServiceImpl roleService) {
         this.userService = userService;
         this.institutionService = institutionService;
+        this.roleService = roleService;
     }
 
     @GetMapping("/panel")
@@ -65,5 +66,42 @@ public class AdminController {
     public String saveInstitution(@ModelAttribute Institution institution) {
         institutionService.save(institution);
         return "redirect:/admin/institution-list";
+    }
+
+    @GetMapping("/admin-list")
+    public String adminList(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
+        model.addAttribute("adminList", userService.findAllAdministrators());
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/admins";
+    }
+
+    @GetMapping("/admin-delete/{id}")
+    public String adminDelete(@PathVariable long id) {
+        roleService.deleteByUserId(id);
+        userService.delete(id);
+        return "redirect:/admin/admin-list";
+    }
+
+    @GetMapping("/admin-add")
+    public String adminAdd(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
+        model.addAttribute("admin", new User());
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/admin-form";
+    }
+
+    @GetMapping("/admin-add/{id}")
+    public String adminEdit(@AuthenticationPrincipal CurrentUser currentUser, Model model, @PathVariable long id) {
+        model.addAttribute("admin", userService.getOne(id));
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/admin-form";
+    }
+
+    @PostMapping("/admin-add")
+    public String saveAdmin(@ModelAttribute("admin") User admin) {
+        userService.saveAdmin(admin);
+        return "redirect:/admin/admin-list";
     }
 }

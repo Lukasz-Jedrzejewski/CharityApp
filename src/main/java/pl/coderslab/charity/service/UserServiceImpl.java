@@ -10,6 +10,7 @@ import pl.coderslab.charity.repository.UserRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -57,5 +58,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean existsByMail(String mail) {
         return userRepository.existsUserByEmail(mail);
+    }
+
+    @Override
+    public List<User> findAllAdministrators() {
+        return userRepository.findAllByRoleAdminCustomQuery();
+    }
+
+    @Override
+    public void delete(long id) {
+        userRepository.delete(getOne(id));
+    }
+
+    @Override
+    public User getOne(long id) {
+        return userRepository.getOne(id);
     }
 }
