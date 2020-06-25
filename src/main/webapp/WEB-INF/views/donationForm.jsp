@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <%@include file="header.jsp"%>
@@ -8,11 +9,25 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                Witaj
+                <sec:authorize access="isAuthenticated()">
+                ${user.email}
+                </sec:authorize>
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/user/panel">Profil</a></li>
+                    <li><a href="/user/user-edit/${user.id}">Edytuj dane</a></li>
+                    <li><a href="/user/edit-pass/${user.id}">Zmień hasło</a></li>
+                    <li>
+                        <nav>
+                            <sec:authorize access="isAuthenticated()">
+                                <form action="<c:url value="/logout"/>" method="post">
+                                    <button class="btn" type="submit">Wyloguj</button>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                </form>
+                            </sec:authorize>
+                        </nav
+                        >
+                    </li>
                 </ul>
             </li>
         </ul>
