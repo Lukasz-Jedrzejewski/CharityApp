@@ -26,6 +26,16 @@ public class Donation {
     private LocalTime pickUpTime;
     private String pickUpComment;
     private String phoneNumber;
+    @ManyToOne(cascade = CascadeType.DETACH)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Donation() {
     }
