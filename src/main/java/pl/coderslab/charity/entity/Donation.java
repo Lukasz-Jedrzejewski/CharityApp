@@ -28,7 +28,23 @@ public class Donation {
     private String phoneNumber;
     @ManyToOne(cascade = CascadeType.DETACH)
     private User user;
-    private boolean picked;
+    private boolean picked = false;
+    private LocalDate created;
+    @PrePersist
+    public void prePersist() {
+        created = LocalDate.now();
+    }
+
+    public Donation() {
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
+    }
 
     public boolean isPicked() {
         return picked;
@@ -44,9 +60,6 @@ public class Donation {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Donation() {
     }
 
     public Long getId() {

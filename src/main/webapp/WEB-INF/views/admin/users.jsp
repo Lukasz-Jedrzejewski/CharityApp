@@ -9,8 +9,8 @@
     <section class="help">
         <div class="help--slides active" data-id="1">
             <ul class="help--slides-items">
+                <c:forEach items="${userList}" var="user">
                     <li>
-                        <c:forEach items="${userList}" var="user" varStatus="status">
                         <div class="col">
                             <div class="title">Nazwa: ${user.firstName} : ${user.lastName}</div>
                             <div class="subtitle">Mail: ${user.email} aktywny: ${user.enabled}</div>
@@ -25,8 +25,8 @@
                                    class="btn btn--without-border active">Deaktywacja</a>
                             </div>
                         </div>
-                        </c:forEach>
                     </li>
+                </c:forEach>
             </ul>
         </div>
     </section>
