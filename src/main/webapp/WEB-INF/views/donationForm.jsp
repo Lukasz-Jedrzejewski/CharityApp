@@ -17,6 +17,7 @@
                     <li><a href="/user/panel">Profil</a></li>
                     <li><a href="/user/user-edit/${user.id}">Edytuj dane</a></li>
                     <li><a href="/user/edit-pass/${user.id}">Zmień hasło</a></li>
+                    <li><a href="/user/my-donations">Moje donacje</a></li>
                     <li>
                         <nav>
                             <sec:authorize access="isAuthenticated()">

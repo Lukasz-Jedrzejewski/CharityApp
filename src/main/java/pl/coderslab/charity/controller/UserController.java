@@ -4,34 +4,32 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.charity.entity.Category;
+import pl.coderslab.charity.entity.Donation;
+import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
+import pl.coderslab.charity.service.CategoryServiceImpl;
+import pl.coderslab.charity.service.DonationServiceImpl;
+import pl.coderslab.charity.service.InstitutionServiceImpl;
 import pl.coderslab.charity.service.UserServiceImpl;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
     private UserServiceImpl userService;
+    private DonationServiceImpl donationService;
+    private CategoryServiceImpl categoryService;
+    private InstitutionServiceImpl institutionService;
 
-    public UserController(UserServiceImpl userService) {
+    public UserController(UserServiceImpl userService, DonationServiceImpl donationService, CategoryServiceImpl categoryService, InstitutionServiceImpl institutionService) {
         this.userService = userService;
-    }
-
-    @GetMapping("/register")
-    public String login(Model model) {
-        model.addAttribute("user", new User());
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String addUser(@ModelAttribute User user) {
-        if (user.getPassword2().equals(user.getPassword())) {
-            userService.saveUser(user);
-        } else {
-            return "passInvalid";
-        }
-        return "redirect:/login";
+        this.donationService = donationService;
+        this.categoryService = categoryService;
+        this.institutionService = institutionService;
     }
 
     @GetMapping("/panel")
@@ -68,4 +66,26 @@ public class UserController {
         userService.changePass(user);
         return "redirect:/user/panel";
     }
+
+    @GetMapping("my-donations")
+    public String readUserDonations(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
+        model.addAttribute("user", currentUser.getUser());
+        return "/user/my-donations";
+    }
+
+    @ModelAttribute("myDonations")
+    public List<Donation> userDonations(@AuthenticationPrincipal CurrentUser currentUser){
+        return donationService.findUserDonations(currentUser.getUser().getId());
+    }
+
+    @ModelAttribute("categories")
+    public List<Category> categories(){
+        return categoryService.findAll();
+    }
+
+    @ModelAttribute("institutions")
+    public List<Institution> institutions(){
+        return institutionService.findAll();
+    }
 }
+

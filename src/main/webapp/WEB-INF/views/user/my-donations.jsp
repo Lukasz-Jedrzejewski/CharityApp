@@ -1,0 +1,32 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<%@include file="../header.jsp"%>
+<body>
+<header class="header--form-page">
+    <%@include file="user-menu.jsp"%>
+
+    <section class="help">
+        <div class="help--slides active" data-id="1">
+            <ul class="help--slides-items">
+                <li>
+                    <c:forEach items="${myDonations}" var="myDon" >
+                        <div class="col">
+                            <c:forEach items="${myDon.categories}" var="category">
+                                <div class="title">Nazwa: ${category.name}</div>
+                            </c:forEach>
+                            <div class="title">Dla: ${myDon.institution.name}</div>
+                            <div class="title">Worków: ${myDon.quantity}</div>
+                            <div class="title">Adres: ${myDon.city} Ulica: ${myDon.street} Kod pocztowy: ${myDon.zipCode}</div>
+                            <div class="title">Data odbioru: ${myDon.pickUpDate} Godzina: ${myDon.pickUpTime}</div>
+                            <div class="title">Mój komentarz: ${myDon.pickUpComment}</div>
+                        </div>
+                    </c:forEach>
+                </li>
+            </ul>
+        </div>
+    </section>
+</header>
+</body>
+</html>

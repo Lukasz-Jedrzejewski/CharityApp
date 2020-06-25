@@ -9,7 +9,7 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li><a href="/about">Zaloguj</a></li>
-            <li class="highlighted"><a href="/user/register">Załóż konto</a></li>
+            <li class="highlighted"><a href="/register">Załóż konto</a></li>
         </ul>
 
         <ul>

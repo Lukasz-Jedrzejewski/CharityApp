@@ -1,5 +1,6 @@
 package pl.coderslab.charity.interfaces;
 
+import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.entity.User;
 
 import java.util.List;

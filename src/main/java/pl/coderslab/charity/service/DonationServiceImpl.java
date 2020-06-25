@@ -5,6 +5,7 @@ import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.interfaces.DonationService;
 import pl.coderslab.charity.repository.DonationRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,5 +36,10 @@ public class DonationServiceImpl implements DonationService {
     @Override
     public void save(Donation donation) {
         donationRepository.save(donation);
+    }
+
+    @Override
+    public List<Donation> findUserDonations(long id) {
+        return donationRepository.findUserDonations(id);
     }
 }

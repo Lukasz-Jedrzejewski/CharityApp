@@ -54,7 +54,9 @@ public class DonationController {
     }
 
     @PostMapping("/form-confirmation")
-    public String saveDonation(@ModelAttribute Donation donation, @AuthenticationPrincipal CurrentUser currentUser) {
+    public String saveDonation(Model model, @ModelAttribute Donation donation, @AuthenticationPrincipal CurrentUser currentUser) {
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
         donation.setUser(currentUser.getUser());
         donationService.save(donation);
         return "form-confirmation";
