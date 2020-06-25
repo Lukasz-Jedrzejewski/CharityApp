@@ -42,4 +42,9 @@ public class DonationServiceImpl implements DonationService {
     public List<Donation> findUserDonations(long id) {
         return donationRepository.findUserDonations(id);
     }
+
+    @Override
+    public Donation getOne(long id) {
+        return donationRepository.getOne(id);
+    }
 }

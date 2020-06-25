@@ -87,5 +87,13 @@ public class UserController {
     public List<Institution> institutions(){
         return institutionService.findAll();
     }
+
+    @GetMapping("/set-status/{id}")
+    public String setPicked(@PathVariable long id) {
+        Donation donation = donationService.getOne(id);
+        donation.setPicked(true);
+        donationService.save(donation);
+        return "redirect:/user/my-donations";
+    }
 }
 

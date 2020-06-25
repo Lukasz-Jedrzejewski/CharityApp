@@ -21,6 +21,10 @@
                             <div class="title">Adres: ${myDon.city} Ulica: ${myDon.street} Kod pocztowy: ${myDon.zipCode}</div>
                             <div class="title">Data odbioru: ${myDon.pickUpDate} Godzina: ${myDon.pickUpTime}</div>
                             <div class="title">Mój komentarz: ${myDon.pickUpComment}</div>
+                            <div class="title">
+                                Status: <c:if test="${myDon.picked == false}">Nieodebrane<a href="/user/set-status/${myDon.id}" class="btn btn--without-border active">Odebrano</a></c:if>
+                                <c:if test="${myDon.picked == true}">Odebrane</c:if>
+                            </div>
                         </div>
                     </c:forEach>
                 </li>

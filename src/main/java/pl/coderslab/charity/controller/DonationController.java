@@ -58,6 +58,7 @@ public class DonationController {
         User user = currentUser.getUser();
         model.addAttribute("user", user);
         donation.setUser(currentUser.getUser());
+        donation.setPicked(false);
         donationService.save(donation);
         return "form-confirmation";
     }

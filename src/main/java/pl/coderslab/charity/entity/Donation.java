@@ -28,6 +28,15 @@ public class Donation {
     private String phoneNumber;
     @ManyToOne(cascade = CascadeType.DETACH)
     private User user;
+    private boolean picked;
+
+    public boolean isPicked() {
+        return picked;
+    }
+
+    public void setPicked(boolean picked) {
+        this.picked = picked;
+    }
 
     public User getUser() {
         return user;
