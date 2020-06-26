@@ -13,7 +13,10 @@
                     <li>
                         <div class="col">
                             <div class="title">Nazwa: ${user.firstName} : ${user.lastName}</div>
-                            <div class="subtitle">Mail: ${user.email} aktywny: ${user.enabled}</div>
+                            <div class="subtitle">Mail: ${user.email} status:
+                                    <c:if test="${user.enabled == true}">aktywny</c:if>
+                                    <c:if test="${user.enabled == false}">nieaktywny</c:if>
+                                    </div>
                             <div>
                                 <a href="/admin/user-add/${user.id}"
                                    class="btn btn--without-border active">Edycja</a>
