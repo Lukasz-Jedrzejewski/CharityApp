@@ -2,17 +2,14 @@ package pl.coderslab.charity.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
+import pl.coderslab.charity.entity.VerificationToken;
 import pl.coderslab.charity.fixture.InitData;
-import pl.coderslab.charity.service.DonationServiceImpl;
-import pl.coderslab.charity.service.InstitutionServiceImpl;
-import pl.coderslab.charity.service.UserServiceImpl;
+import pl.coderslab.charity.service.*;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 
@@ -22,12 +19,18 @@ public class HomeController {
     private InstitutionServiceImpl institutionService;
     private DonationServiceImpl donationService;
     private UserServiceImpl userService;
+    private VerificationTokenServiceImpl verificationTokenService;
+    private MailServiceImpl mailService;
 
-    public HomeController(InitData initData, InstitutionServiceImpl institutionService, DonationServiceImpl donationService, UserServiceImpl userService) {
+    public HomeController(InitData initData, InstitutionServiceImpl institutionService,
+                          DonationServiceImpl donationService, UserServiceImpl userService,
+                          VerificationTokenServiceImpl verificationTokenService, MailServiceImpl mailService) {
         this.initData = initData;
         this.institutionService = institutionService;
         this.donationService = donationService;
         this.userService = userService;
+        this.verificationTokenService = verificationTokenService;
+        this.mailService = mailService;
     }
 
     @RequestMapping("/")
@@ -44,13 +47,30 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String addUser(@ModelAttribute User user) {
+    public String addUser(@ModelAttribute User user) throws MessagingException {
         if (user.getPassword2().equals(user.getPassword())) {
+            user.setEnabled(false);
             userService.saveUser(user);
+            VerificationToken verificationToken = new VerificationToken(user);
+            verificationTokenService.save(verificationToken);
+            mailService.sendVerificationToken(user.getEmail(), verificationToken.getToken());
         } else {
             return "passInvalid";
         }
-        return "redirect:/login";
+        return "register-verify";
+    }
+
+    @RequestMapping(value = "/confirm-register", method = {RequestMethod.GET, RequestMethod.POST})
+    public String confirmRegister(@RequestParam("token") String verificationToken) {
+        VerificationToken token = verificationTokenService.findToken(verificationToken);
+        if (token != null) {
+            User user = userService.findByMail(token.getUser().getEmail());
+            user.setEnabled(true);
+            userService.editUser(user);
+            return "/register-successfully";
+        } else {
+            return "/register-failed";
+        }
     }
 
     @ModelAttribute("institutions")

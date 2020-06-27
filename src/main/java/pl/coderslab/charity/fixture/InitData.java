@@ -31,7 +31,7 @@ public class InitData {
         User user = new User();
         user.setFirstName("Admin");
         user.setLastName("SuperAdmin");
-        user.setEmail("admin@mail.com");
+        user.setEmail("SketchAppSender@gmail.com");
         user.setPassword("super");
         userService.saveAdmin(user);
     }
