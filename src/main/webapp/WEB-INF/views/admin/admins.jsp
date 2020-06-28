@@ -13,7 +13,10 @@
                         <c:forEach items="${adminList}" var="admin" varStatus="status">
                         <div class="col">
                             <div class="title">Nazwa: ${admin.firstName} : ${admin.lastName}</div>
-                            <div class="subtitle">Mail: ${admin.email} aktywny: ${admin.enabled}</div>
+                            <div class="subtitle">Mail: ${admin.email} status:
+                                <c:if test="${admin.enabled == true}">aktywny</c:if>
+                                <c:if test="${admin.enabled == false}">nieaktywny</c:if>
+                            </div>
                             <div>
                                 <a href="/admin/admin-add/${admin.id}"
                                    class="btn btn--without-border active">Edycja</a>

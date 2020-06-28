@@ -19,6 +19,6 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     @Query("select sum(d.quantity) from Donation d ")
     Optional<Integer> getBagQuantity();
 
-    @Query("select d from Donation d inner join d.user u where u.id=:id order by d.picked ASC, d.pickUpDate ASC , d.created ASC")
+    @Query("select d from Donation d where d.user.id=:id order by d.picked ASC, d.pickUpDate ASC, d.created ASC")
     List<Donation> findUserDonations(@Param("id") long id);
 }

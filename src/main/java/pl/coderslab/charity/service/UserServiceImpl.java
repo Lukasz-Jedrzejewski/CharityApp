@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
         userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnabled(true);
+        user.setEnabled(false);
         boolean existUser = existsByMail(user.getEmail());
         if (!existUser) {
             userRepository.save(user);

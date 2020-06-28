@@ -164,4 +164,14 @@ public class Donation {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
+
+    public String toHtml() {
+        return "<section><ul><li>Ilość worków: " + quantity + "</li>" +
+                "<li>Dla fundacji: " + institution.getName() + "</li>" +
+                "<li>Miejsce odbioru: " + city + ", " + street + ", " + zipCode +"</li>" +
+                "<li>Dnia: " + pickUpDate + " o godzinie: " + pickUpTime +"</li>" +
+                "<li>Twój komentarz: " + pickUpComment +"</li>" +
+                "<li>Twój numer kontaktowy: " + phoneNumber + "</li>" +
+                "</ul></section>";
+    }
 }
