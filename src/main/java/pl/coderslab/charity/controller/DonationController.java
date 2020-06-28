@@ -12,11 +12,9 @@ import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
-import pl.coderslab.charity.service.CategoryServiceImpl;
-import pl.coderslab.charity.service.DonationServiceImpl;
-import pl.coderslab.charity.service.InstitutionServiceImpl;
-import pl.coderslab.charity.service.UserServiceImpl;
+import pl.coderslab.charity.service.*;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 @Controller
@@ -27,12 +25,14 @@ public class DonationController {
     private DonationServiceImpl donationService;
     private InstitutionServiceImpl institutionService;
     private UserServiceImpl userService;
+    private MailServiceImpl mailService;
 
-    public DonationController(CategoryServiceImpl categoryService, DonationServiceImpl donationService, InstitutionServiceImpl institutionService, UserServiceImpl userService) {
+    public DonationController(CategoryServiceImpl categoryService, DonationServiceImpl donationService, InstitutionServiceImpl institutionService, UserServiceImpl userService, MailServiceImpl mailService) {
         this.categoryService = categoryService;
         this.donationService = donationService;
         this.institutionService = institutionService;
         this.userService = userService;
+        this.mailService = mailService;
     }
 
     @ModelAttribute("categories")
@@ -54,12 +54,14 @@ public class DonationController {
     }
 
     @PostMapping("/form-confirmation")
-    public String saveDonation(Model model, @ModelAttribute Donation donation, @AuthenticationPrincipal CurrentUser currentUser) {
+    public String saveDonation(Model model, @ModelAttribute Donation donation,
+                               @AuthenticationPrincipal CurrentUser currentUser) throws MessagingException {
         User user = currentUser.getUser();
         model.addAttribute("user", user);
         donation.setUser(currentUser.getUser());
         donation.setPicked(false);
         donationService.save(donation);
+        mailService.sendMsg(user.getEmail(), "Twoja donacja", donation.toHtml() + " Kurier skontaktuje się z Tobą w dniu odbioru.");
         return "form-confirmation";
     }
 
