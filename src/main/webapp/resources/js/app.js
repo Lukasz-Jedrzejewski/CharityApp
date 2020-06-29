@@ -115,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function() {
     init() {
       this.events();
       this.updateForm();
-      this.passCheck();
     }
 
     /**
@@ -204,9 +203,6 @@ document.addEventListener("DOMContentLoaded", function() {
       ul2.lastElementChild.innerHTML = commentData.value;
 
     }
-
-
-
 
   }
   const form = document.querySelector(".form--steps");
