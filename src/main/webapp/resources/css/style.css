@@ -1848,7 +1848,7 @@ footer .bottom-line--icons a img {
 .valid:before {
   position: relative;
   left: -35px;
-  content: "&#10004;";
+  content: '\2714';
 }
 
 /* Add a red text color and an "x" icon when the requirements are wrong */
@@ -1859,7 +1859,7 @@ footer .bottom-line--icons a img {
 .invalid:before {
   position: relative;
   left: -35px;
-  content: "&#10006;";
+  content: '\2716';
 }
 
 
