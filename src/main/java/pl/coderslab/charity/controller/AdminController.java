@@ -8,10 +8,7 @@ import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
-import pl.coderslab.charity.service.CategoryServiceImpl;
-import pl.coderslab.charity.service.InstitutionServiceImpl;
-import pl.coderslab.charity.service.RoleServiceImpl;
-import pl.coderslab.charity.service.UserServiceImpl;
+import pl.coderslab.charity.service.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -21,12 +18,14 @@ public class AdminController {
     private InstitutionServiceImpl institutionService;
     private RoleServiceImpl roleService;
     private CategoryServiceImpl categoryService;
+    private DonationServiceImpl donationService;
 
-    public AdminController(UserServiceImpl userService, InstitutionServiceImpl institutionService, RoleServiceImpl roleService, CategoryServiceImpl categoryService) {
+    public AdminController(UserServiceImpl userService, InstitutionServiceImpl institutionService, RoleServiceImpl roleService, CategoryServiceImpl categoryService, DonationServiceImpl donationService) {
         this.userService = userService;
         this.institutionService = institutionService;
         this.roleService = roleService;
         this.categoryService = categoryService;
+        this.donationService = donationService;
     }
 
     @GetMapping("/panel")
@@ -186,5 +185,13 @@ public class AdminController {
     public String saveCategory(@ModelAttribute Category category) {
         categoryService.save(category);
         return "redirect:/admin/category-list";
+    }
+
+    @GetMapping("/donation-list")
+    public String donationList(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
+        model.addAttribute("donationList", donationService.findAll());
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/donations";
     }
 }

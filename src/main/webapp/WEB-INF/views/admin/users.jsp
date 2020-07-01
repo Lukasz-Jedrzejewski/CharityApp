@@ -12,7 +12,7 @@
                 <c:forEach items="${userList}" var="user">
                     <li>
                         <div class="col">
-                            <div class="title">Nazwa: ${user.firstName} : ${user.lastName}</div>
+                            <div class="title">Dane personalne: ${user.firstName} ${user.lastName}</div>
                             <div class="subtitle">Mail: ${user.email} status:
                                     <c:if test="${user.enabled == true}">aktywny</c:if>
                                     <c:if test="${user.enabled == false}">nieaktywny</c:if>

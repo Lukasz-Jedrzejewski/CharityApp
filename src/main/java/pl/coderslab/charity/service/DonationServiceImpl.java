@@ -47,4 +47,9 @@ public class DonationServiceImpl implements DonationService {
     public Donation getOne(long id) {
         return donationRepository.getOne(id);
     }
+
+    @Override
+    public List<Donation> findAll() {
+        return donationRepository.findAll();
+    }
 }
