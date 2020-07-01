@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.interfaces.UserService;
+import pl.coderslab.charity.model.UserModel;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
 
@@ -30,11 +31,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(User user, UserModel userModel) {
         Role userRole;
         userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setFirstName(userModel.getFirstName());
+        user.setLastName(userModel.getLastName());
+        user.setEmail(userModel.getEmail());
+        user.setPassword(passwordEncoder.encode(userModel.getPassword()));
         user.setEnabled(false);
         boolean existUser = existsByMail(user.getEmail());
         if (!existUser) {
@@ -111,5 +115,18 @@ public class UserServiceImpl implements UserService {
         user.setEmail(userDb.getEmail());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+    }
+
+    @Override
+    public void save(User user) {
+        Role userRole;
+        userRole = roleRepository.findByName("ROLE_USER");
+        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnabled(false);
+        boolean existUser = existsByMail(user.getEmail());
+        if (!existUser) {
+            userRepository.save(user);
+        }
     }
 }
