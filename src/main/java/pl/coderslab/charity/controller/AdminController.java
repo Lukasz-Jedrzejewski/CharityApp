@@ -130,7 +130,7 @@ public class AdminController {
 
     @PostMapping("/user-add")
     public String saveUser(@ModelAttribute("userToEdit") User user) {
-        userService.saveUser(user);
+        userService.save(user);
         return "redirect:/admin/user-list";
     }
 

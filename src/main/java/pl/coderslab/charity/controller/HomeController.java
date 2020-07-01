@@ -7,6 +7,7 @@ import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.entity.VerificationToken;
 import pl.coderslab.charity.fixture.InitData;
+import pl.coderslab.charity.model.UserModel;
 import pl.coderslab.charity.service.*;
 
 import javax.mail.MessagingException;
@@ -42,15 +43,16 @@ public class HomeController {
 
     @GetMapping("/register")
     public String login(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("userModel", new UserModel());
         return "register";
     }
 
     @PostMapping("/register")
-    public String addUser(@ModelAttribute User user) throws MessagingException {
-        if (user.getPassword2().equals(user.getPassword())) {
+    public String addUser(@ModelAttribute UserModel userModel) throws MessagingException {
+        if (userModel.getPassword2().equals(userModel.getPassword())) {
+            User user = new User();
             user.setEnabled(false);
-            userService.saveUser(user);
+            userService.saveUser(user, userModel);
             VerificationToken verificationToken = new VerificationToken(user);
             verificationTokenService.save(verificationToken);
             mailService.sendVerificationToken(user.getEmail(), verificationToken.getToken());
