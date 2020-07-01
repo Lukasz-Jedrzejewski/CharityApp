@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const summaryInstitution = summary.querySelectorAll(".summary--text")[1];
       console.log(summaryInstitution);
       const institutionData = document.querySelector('[name="institution"]:checked');
-      summaryInstitution.innerHTML = "Dla fundacji " + institutionData.dataset.name;
+      summaryInstitution.innerHTML = "Dla fundacji \"" + institutionData.dataset.name + "\"";
 
 
       let ul1 = summary.nextElementSibling.firstElementChild.querySelector("ul");

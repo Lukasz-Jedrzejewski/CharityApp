@@ -4,9 +4,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
+import pl.coderslab.charity.service.CategoryServiceImpl;
 import pl.coderslab.charity.service.InstitutionServiceImpl;
 import pl.coderslab.charity.service.RoleServiceImpl;
 import pl.coderslab.charity.service.UserServiceImpl;
@@ -18,11 +20,13 @@ public class AdminController {
     private UserServiceImpl userService;
     private InstitutionServiceImpl institutionService;
     private RoleServiceImpl roleService;
+    private CategoryServiceImpl categoryService;
 
-    public AdminController(UserServiceImpl userService, InstitutionServiceImpl institutionService, RoleServiceImpl roleService) {
+    public AdminController(UserServiceImpl userService, InstitutionServiceImpl institutionService, RoleServiceImpl roleService, CategoryServiceImpl categoryService) {
         this.userService = userService;
         this.institutionService = institutionService;
         this.roleService = roleService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/panel")
@@ -146,5 +150,41 @@ public class AdminController {
         User user = userService.getOne(id);
         userService.changeDisabled(user);
         return "redirect:/admin/user-list";
+    }
+
+    @GetMapping("/category-list")
+    public String categoryList(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
+        model.addAttribute("categoryList", categoryService.findAll());
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/categories";
+    }
+
+    @GetMapping("/category-delete/{id}")
+    public String categoryDelete(@PathVariable long id) {
+        categoryService.delete(id);
+        return "redirect:/admin/category-list";
+    }
+
+    @GetMapping("/category-add")
+    public String categoryAdd(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
+        model.addAttribute("category", new Category());
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/category-form";
+    }
+
+    @GetMapping("/category-add/{id}")
+    public String categoryEdit(@AuthenticationPrincipal CurrentUser currentUser, Model model, @PathVariable long id) {
+        model.addAttribute("category", categoryService.getOne(id));
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/category-form";
+    }
+
+    @PostMapping("/category-add")
+    public String saveCategory(@ModelAttribute Category category) {
+        categoryService.save(category);
+        return "redirect:/admin/category-list";
     }
 }
