@@ -25,4 +25,12 @@ public class CategoryServiceImpl implements CategoryService {
     public Category getOne(long id) {
         return categoryRepository.getOne(id);
     }
+
+    @Override
+    public void save(Category category) {
+        boolean existCategory = categoryRepository.existsCategoryByName(category.getName());
+        if (!existCategory) {
+            categoryRepository.save(category);
+        }
+    }
 }

@@ -33,6 +33,9 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     @Override
     public void save(Institution institution) {
-        institutionRepository.save(institution);
+        boolean existInstitution = institutionRepository.existsInstitutionByName(institution.getName());
+        if (!existInstitution) {
+            institutionRepository.save(institution);
+        }
     }
 }

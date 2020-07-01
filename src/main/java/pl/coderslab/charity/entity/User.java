@@ -1,7 +1,5 @@
 package pl.coderslab.charity.entity;
 
-import org.hibernate.annotations.OnDelete;
-
 import javax.persistence.*;
 import java.util.Set;
 

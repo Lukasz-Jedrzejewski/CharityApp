@@ -38,6 +38,8 @@ public class HomeController {
     public String homeAction(Model model){
         initData.initRoles();
         initData.initSuperAdmin();
+        initData.initCategories();
+        initData.initInstitutions();
         return "index";
     }
 
