@@ -12,10 +12,10 @@ import pl.coderslab.charity.service.UserServiceImpl;
 
 @Service
 public class InitData {
-    private RoleServiceImpl roleService;
-    private UserServiceImpl userService;
-    private CategoryServiceImpl categoryService;
-    private InstitutionServiceImpl institutionService;
+    private final RoleServiceImpl roleService;
+    private final UserServiceImpl userService;
+    private final CategoryServiceImpl categoryService;
+    private final InstitutionServiceImpl institutionService;
 
     public InitData(RoleServiceImpl roleService, UserServiceImpl userService, CategoryServiceImpl categoryService, InstitutionServiceImpl institutionService) {
         this.roleService = roleService;

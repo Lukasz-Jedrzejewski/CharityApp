@@ -1,6 +1,5 @@
 package pl.coderslab.charity.interfaces;
 
-import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.UserModel;
 

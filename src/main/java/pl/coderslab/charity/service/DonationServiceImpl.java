@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class DonationServiceImpl implements DonationService {
 
-    private DonationRepository donationRepository;
+    private final DonationRepository donationRepository;
 
     public DonationServiceImpl(DonationRepository donationRepository) {
         this.donationRepository = donationRepository;
@@ -20,11 +20,7 @@ public class DonationServiceImpl implements DonationService {
     @Override
     public Integer getBagQuantity() {
         Optional<Integer> bags = donationRepository.getBagQuantity();
-        if (bags.isPresent()) {
-            return bags.get();
-        } else {
-            return 0;
-        }
+        return bags.orElse(0);
     }
 
     @Override

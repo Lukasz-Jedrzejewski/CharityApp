@@ -16,12 +16,12 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    private InitData initData;
-    private InstitutionServiceImpl institutionService;
-    private DonationServiceImpl donationService;
-    private UserServiceImpl userService;
-    private VerificationTokenServiceImpl verificationTokenService;
-    private MailServiceImpl mailService;
+    private final InitData initData;
+    private final InstitutionServiceImpl institutionService;
+    private final DonationServiceImpl donationService;
+    private final UserServiceImpl userService;
+    private final VerificationTokenServiceImpl verificationTokenService;
+    private final MailServiceImpl mailService;
 
     public HomeController(InitData initData, InstitutionServiceImpl institutionService,
                           DonationServiceImpl donationService, UserServiceImpl userService,

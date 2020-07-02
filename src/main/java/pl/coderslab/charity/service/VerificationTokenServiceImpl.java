@@ -8,7 +8,7 @@ import pl.coderslab.charity.repository.VerificationTokenRepository;
 @Service
 public class VerificationTokenServiceImpl implements VerificationTokenService {
 
-    private VerificationTokenRepository verificationTokenRepository;
+    private final VerificationTokenRepository verificationTokenRepository;
 
     public VerificationTokenServiceImpl(VerificationTokenRepository verificationTokenRepository) {
         this.verificationTokenRepository = verificationTokenRepository;

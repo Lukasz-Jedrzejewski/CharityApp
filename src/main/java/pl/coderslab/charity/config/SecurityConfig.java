@@ -35,14 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler () {
-        return new AuthenticationSuccessHandler() {
-            @Override
-            public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
-                    response.sendRedirect("/admin/panel");
-                } else {
-                    response.sendRedirect("/user/panel");
-                }
+        return (request, response, authentication) -> {
+            if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+                response.sendRedirect("/admin/panel");
+            } else {
+                response.sendRedirect("/user/panel");
             }
         };
     }

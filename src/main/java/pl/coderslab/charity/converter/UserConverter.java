@@ -1,12 +1,13 @@
 package pl.coderslab.charity.converter;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.repository.UserRepository;
-
+@Component
 public class UserConverter implements Converter<String, User> {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserConverter(UserRepository userRepository) {
         this.userRepository = userRepository;

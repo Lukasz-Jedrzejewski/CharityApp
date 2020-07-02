@@ -20,10 +20,10 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    private UserServiceImpl userService;
-    private DonationServiceImpl donationService;
-    private CategoryServiceImpl categoryService;
-    private InstitutionServiceImpl institutionService;
+    private final UserServiceImpl userService;
+    private final DonationServiceImpl donationService;
+    private final CategoryServiceImpl categoryService;
+    private final InstitutionServiceImpl institutionService;
 
     public UserController(UserServiceImpl userService, DonationServiceImpl donationService, CategoryServiceImpl categoryService, InstitutionServiceImpl institutionService) {
         this.userService = userService;

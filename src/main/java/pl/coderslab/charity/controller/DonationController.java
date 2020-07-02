@@ -21,11 +21,11 @@ import java.util.List;
 @RequestMapping("/donate")
 public class DonationController {
 
-    private CategoryServiceImpl categoryService;
-    private DonationServiceImpl donationService;
-    private InstitutionServiceImpl institutionService;
-    private UserServiceImpl userService;
-    private MailServiceImpl mailService;
+    private final CategoryServiceImpl categoryService;
+    private final DonationServiceImpl donationService;
+    private final InstitutionServiceImpl institutionService;
+    private final UserServiceImpl userService;
+    private final MailServiceImpl mailService;
 
     public DonationController(CategoryServiceImpl categoryService, DonationServiceImpl donationService, InstitutionServiceImpl institutionService, UserServiceImpl userService, MailServiceImpl mailService) {
         this.categoryService = categoryService;

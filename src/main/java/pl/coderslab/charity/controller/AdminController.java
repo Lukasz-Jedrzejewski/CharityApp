@@ -14,11 +14,11 @@ import pl.coderslab.charity.service.*;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private UserServiceImpl userService;
-    private InstitutionServiceImpl institutionService;
-    private RoleServiceImpl roleService;
-    private CategoryServiceImpl categoryService;
-    private DonationServiceImpl donationService;
+    private final UserServiceImpl userService;
+    private final InstitutionServiceImpl institutionService;
+    private final RoleServiceImpl roleService;
+    private final CategoryServiceImpl categoryService;
+    private final DonationServiceImpl donationService;
 
     public AdminController(UserServiceImpl userService, InstitutionServiceImpl institutionService, RoleServiceImpl roleService, CategoryServiceImpl categoryService, DonationServiceImpl donationService) {
         this.userService = userService;
