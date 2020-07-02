@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Category;
-import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.service.*;
@@ -15,14 +14,12 @@ import pl.coderslab.charity.service.*;
 public class AdminController {
 
     private final UserServiceImpl userService;
-    private final InstitutionServiceImpl institutionService;
     private final RoleServiceImpl roleService;
     private final CategoryServiceImpl categoryService;
     private final DonationServiceImpl donationService;
 
-    public AdminController(UserServiceImpl userService, InstitutionServiceImpl institutionService, RoleServiceImpl roleService, CategoryServiceImpl categoryService, DonationServiceImpl donationService) {
+    public AdminController(UserServiceImpl userService, RoleServiceImpl roleService, CategoryServiceImpl categoryService, DonationServiceImpl donationService) {
         this.userService = userService;
-        this.institutionService = institutionService;
         this.roleService = roleService;
         this.categoryService = categoryService;
         this.donationService = donationService;
@@ -33,42 +30,6 @@ public class AdminController {
         User user = currentUser.getUser();
         model.addAttribute("user", user);
         return "/admin/panel";
-    }
-
-    @GetMapping("/institution-list")
-    public String institutionList(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
-        model.addAttribute("institutionList", institutionService.findAll());
-        User user = currentUser.getUser();
-        model.addAttribute("user", user);
-        return "/admin/institutions";
-    }
-
-    @GetMapping("/institution-delete/{id}")
-    public String institutionDelete(@PathVariable long id) {
-        institutionService.delete(id);
-        return "redirect:/admin/institution-list";
-    }
-
-    @GetMapping("/institution-add")
-    public String institutionAdd(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
-        model.addAttribute("institution", new Institution());
-        User user = currentUser.getUser();
-        model.addAttribute("user", user);
-        return "/admin/institution-form";
-    }
-
-    @GetMapping("/institution-add/{id}")
-    public String institutionEdit(@AuthenticationPrincipal CurrentUser currentUser, Model model, @PathVariable long id) {
-        model.addAttribute("institution", institutionService.getOne(id));
-        User user = currentUser.getUser();
-        model.addAttribute("user", user);
-        return "/admin/institution-form";
-    }
-
-    @PostMapping("/institution-add")
-    public String saveInstitution(@ModelAttribute Institution institution) {
-        institutionService.save(institution);
-        return "redirect:/admin/institution-list";
     }
 
     @GetMapping("/admin-list")
