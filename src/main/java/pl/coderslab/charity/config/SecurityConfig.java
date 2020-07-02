@@ -24,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/register").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasRole("SUPER ADMIN")
                 .antMatchers("/user/**", "/donate/**").hasRole("USER")
                 .and().formLogin()
                 .loginPage("/login")
@@ -37,6 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationSuccessHandler authenticationSuccessHandler () {
         return (request, response, authentication) -> {
             if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+                response.sendRedirect("/admin/panel");
+            } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_SUPER ADMIN"))) {
                 response.sendRedirect("/admin/panel");
             } else {
                 response.sendRedirect("/user/panel");

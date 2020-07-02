@@ -26,6 +26,10 @@ public class InitData {
 
 
     public void initRoles() {
+        Role superAdmin = new Role();
+        superAdmin.setName("ROLE_SUPER ADMIN");
+        roleService.save(superAdmin);
+
         Role admin = new Role();
         admin.setName("ROLE_ADMIN");
         roleService.save(admin);

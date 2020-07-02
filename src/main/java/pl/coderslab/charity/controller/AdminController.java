@@ -1,13 +1,18 @@
 package pl.coderslab.charity.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.service.RoleServiceImpl;
 import pl.coderslab.charity.service.UserServiceImpl;
+
+import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin")
@@ -30,7 +35,17 @@ public class AdminController {
     }
 
     @GetMapping("/admin-delete/{id}")
-    public String adminDelete(@PathVariable long id) {
+    public String adminDelete(@AuthenticationPrincipal CurrentUser currentUser, Model model, @PathVariable long id) {
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        Set<Role> roles =  userService.getOne(id).getRoles();
+        StringBuilder currentRole = new StringBuilder();
+        for (Role role : roles) {
+            currentRole.append(role.getName());
+        }
+        if (currentRole.toString().equals("ROLE_SUPER ADMIN")) {
+            return "/admin/deleteError";
+        }
         roleService.deleteByUserId(id);
         userService.delete(id);
         return "redirect:/admin/admin-list";

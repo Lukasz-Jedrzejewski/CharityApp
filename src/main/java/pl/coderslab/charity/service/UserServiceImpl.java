@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveAdmin(User user) {
         Role adminRole;
-        adminRole = roleRepository.findByName("ROLE_ADMIN");
+        adminRole = roleRepository.findByName("ROLE_SUPER ADMIN");
         user.setRoles(new HashSet<>(Arrays.asList(adminRole)));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(true);
