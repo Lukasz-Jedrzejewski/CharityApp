@@ -87,17 +87,11 @@ public class AdminController {
         return "redirect:/admin/user-list";
     }
 
-    @GetMapping("/user-enabled/{id}")
+    @GetMapping("/user-changeStatus/{id}")
     public String enableUser(@PathVariable long id) {
         User user = userService.getOne(id);
-        userService.changeEnabled(user);
+        userService.changeStatus(user);
         return "redirect:/admin/user-list";
     }
 
-    @GetMapping("/user-disabled/{id}")
-    public String disableUser(@PathVariable long id) {
-        User user = userService.getOne(id);
-        userService.changeDisabled(user);
-        return "redirect:/admin/user-list";
-    }
 }

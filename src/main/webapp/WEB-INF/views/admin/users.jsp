@@ -13,19 +13,19 @@
                     <li>
                         <div class="col">
                             <div class="title">Dane personalne: ${user.firstName} ${user.lastName}</div>
-                            <div class="subtitle">Mail: ${user.email} status:
-                                    <c:if test="${user.enabled == true}">aktywny</c:if>
-                                    <c:if test="${user.enabled == false}">nieaktywny</c:if>
-                                    </div>
+                            <div class="subtitle">Mail: ${user.email}
+                                <br>
+                                status:
+                                <c:if test="${user.enabled == true}"><b>aktywny</b></b></c:if>
+                                <c:if test="${user.enabled == false}"><b>nieaktywny</b></c:if>
+                            </div>
                             <div>
                                 <a href="/admin/user-add/${user.id}"
                                    class="btn btn--without-border active">Edycja</a>
                                 <a href="/admin/user-delete/${user.id}"
                                    class="btn btn--without-border active">Usuwanie</a>
-                                <a href="/admin/user-enabled/${user.id}"
-                                   class="btn btn--without-border active">Aktywacja</a>
-                                <a href="/admin/user-disabled/${user.id}"
-                                   class="btn btn--without-border active">Deaktywacja</a>
+                                <a href="/admin/user-changeStatus/${user.id}"
+                                   class="btn btn--without-border active">Zmiana statusu</a>
                             </div>
                         </div>
                     </li>

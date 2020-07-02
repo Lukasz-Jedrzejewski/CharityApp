@@ -85,14 +85,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeEnabled(User user) {
-        user.setEnabled(true);
-        userRepository.save(user);
-    }
-
-    @Override
-    public void changeDisabled(User user) {
-        user.setEnabled(false);
+    public void changeStatus(User user) {
+        if (user.isEnabled()) {
+            user.setEnabled(false);
+        } else {
+            user.setEnabled(true);
+        }
         userRepository.save(user);
     }
 
