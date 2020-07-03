@@ -9,4 +9,6 @@ public interface CategoryService {
     Category getOne(long id);
     void save(Category category);
     void delete(long id);
+    void changeCategoryId(long id);
+    void setNullable();
 }

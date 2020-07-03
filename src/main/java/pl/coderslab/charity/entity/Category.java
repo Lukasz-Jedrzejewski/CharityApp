@@ -10,7 +10,6 @@ public class Category {
     private Long id;
     private String name;
 
-
     public Category() {
     }
 
@@ -21,8 +20,6 @@ public class Category {
     public void setId(Long id) {
         this.id = id;
     }
-
-
 
     public String getName() {
         return name;

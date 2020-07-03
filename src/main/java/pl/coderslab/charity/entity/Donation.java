@@ -1,11 +1,13 @@
 package pl.coderslab.charity.entity;
 
+import org.hibernate.annotations.OnDelete;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.function.LongToIntFunction;
 
 @Entity
 @Table(name = "donations")
@@ -15,6 +17,7 @@ public class Donation {
     private Long id;
     private Integer quantity;
     @ManyToMany
+    @Convert(converter = LongToIntFunction.class)
     private List<Category> categories;
     @ManyToOne
     private Institution institution;

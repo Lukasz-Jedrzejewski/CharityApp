@@ -34,6 +34,8 @@ public class CharityApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        categoryService.setNullable();
+
         Role superAdmin = new Role();
         superAdmin.setName("ROLE_SUPER ADMIN");
         roleService.save(superAdmin);

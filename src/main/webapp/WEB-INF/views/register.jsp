@@ -37,10 +37,6 @@
         <div class="form-group">
             <input type="password" id="psw" name="password" placeholder="Hasło" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" />
         </div>
-        <div class="form-group">
-            <form:password path="password2" placeholder="Powtórz hasło" />
-            <form:errors path="password2"/>
-        </div>
         <div id="message">
             <h3>Hasło musi składać się z:</h3>
             <p id="letter" class="invalid"><b>małych liter</b></p>
@@ -48,6 +44,10 @@
             <p id="number" class="invalid"><b>cyfr</b></p>
             <p id="length" class="invalid">Minimum <b>8 znaków</b></p>
             <p id="mark" class="invalid"><b>znaków specjalnych @$!%*?&</b></p>
+        </div>
+        <div class="form-group">
+            <form:password path="password2" placeholder="Powtórz hasło" />
+            <form:errors path="password2"/>
         </div>
 
         <div class="form-group form-group--buttons">

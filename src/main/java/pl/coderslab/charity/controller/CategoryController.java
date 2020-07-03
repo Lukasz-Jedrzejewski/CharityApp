@@ -30,6 +30,7 @@ public class CategoryController {
 
     @GetMapping("/category-delete/{id}")
     public String categoryDelete(@PathVariable long id) {
+        categoryService.changeCategoryId(id);
         categoryService.delete(id);
         return "redirect:/admin/category-list";
     }
