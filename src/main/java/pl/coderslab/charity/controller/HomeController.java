@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.entity.VerificationToken;
-import pl.coderslab.charity.fixture.InitData;
 import pl.coderslab.charity.model.UserModel;
 import pl.coderslab.charity.service.*;
 
@@ -16,17 +15,16 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    private final InitData initData;
+//    private final InitData initData;
     private final InstitutionServiceImpl institutionService;
     private final DonationServiceImpl donationService;
     private final UserServiceImpl userService;
     private final VerificationTokenServiceImpl verificationTokenService;
     private final MailServiceImpl mailService;
 
-    public HomeController(InitData initData, InstitutionServiceImpl institutionService,
+    public HomeController(InstitutionServiceImpl institutionService,
                           DonationServiceImpl donationService, UserServiceImpl userService,
                           VerificationTokenServiceImpl verificationTokenService, MailServiceImpl mailService) {
-        this.initData = initData;
         this.institutionService = institutionService;
         this.donationService = donationService;
         this.userService = userService;
@@ -35,11 +33,7 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String homeAction(Model model){
-        initData.initRoles();
-        initData.initSuperAdmin();
-        initData.initCategories();
-        initData.initInstitutions();
+    public String homeAction(){
         return "index";
     }
 

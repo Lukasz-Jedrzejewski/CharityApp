@@ -21,7 +21,15 @@
                 <form:input path="email" placeholder="Email" />
             </div>
             <div class="form-group">
-                <form:password path="password" placeholder="Hasło" />
+                <form:password path="password" id="psw" placeholder="Hasło" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" />
+            </div>
+            <div id="message">
+                <h3>Hasło musi składać się z:</h3>
+                <p id="letter" class="invalid"><b>małych liter</b></p>
+                <p id="capital" class="invalid"><b>dużych liter</b></p>
+                <p id="number" class="invalid"><b>cyfr</b></p>
+                <p id="length" class="invalid">Minimum <b>8 znaków</b></p>
+                <p id="mark" class="invalid"><b>znaków specjalnych @$!%*?&</b></p>
             </div>
             <div class="form-group form-group--buttons">
                 <button type="submit" class="btn">Potwierdzam</button>
@@ -29,5 +37,6 @@
         </form:form>
     </section>
 </header>
+<script src="<c:url value="/resources/js/valid.js"/>"></script>
 </body>
 </html>
