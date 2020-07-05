@@ -31,6 +31,7 @@ public class Donation {
     private String pickUpComment;
     private String phoneNumber;
     @ManyToOne(cascade = CascadeType.DETACH)
+    @Convert(converter = LongToIntFunction.class)
     private User user;
     private boolean picked = false;
     private LocalDate created;

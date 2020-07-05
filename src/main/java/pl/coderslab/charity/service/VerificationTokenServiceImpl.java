@@ -23,4 +23,9 @@ public class VerificationTokenServiceImpl implements VerificationTokenService {
     public void save(VerificationToken verificationToken) {
         verificationTokenRepository.save(verificationToken);
     }
+
+    @Override
+    public void deleteByUserId(long id) {
+        verificationTokenRepository.deleteByUserId(id);
+    }
 }

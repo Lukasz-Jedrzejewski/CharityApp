@@ -53,4 +53,9 @@ public class DonationServiceImpl implements DonationService {
     public void changeIdToNull(long id) {
         donationRepository.setInstitutionIdToNull(id);
     }
+
+    @Override
+    public void changeUserIdToNull(long id) {
+        donationRepository.setUserIdToNull(id);
+    }
 }

@@ -27,4 +27,9 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     @Transactional
     @Query(value = "update Donation d set d.institution.id = null where d.institution.id = :id")
     int setInstitutionIdToNull(@Param("id") long id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update Donation d set d.user.id = null where d.user.id = :id")
+    int setUserIdToNull(@Param("id") long id);
 }

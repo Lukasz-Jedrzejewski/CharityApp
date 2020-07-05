@@ -18,4 +18,6 @@ public interface UserService {
     void editUser(User user);
     void changePass(User user);
     void save(User user);
+    void changeSuperAdminMail(User user);
+
 }

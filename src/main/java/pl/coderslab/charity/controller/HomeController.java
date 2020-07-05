@@ -15,7 +15,6 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-//    private final InitData initData;
     private final InstitutionServiceImpl institutionService;
     private final DonationServiceImpl donationService;
     private final UserServiceImpl userService;

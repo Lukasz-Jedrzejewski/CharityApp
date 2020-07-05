@@ -13,9 +13,11 @@ import pl.coderslab.charity.service.*;
 public class SuperAdminController {
 
     private final DonationServiceImpl donationService;
+    private final UserServiceImpl userService;
 
-    public SuperAdminController(DonationServiceImpl donationService) {
+    public SuperAdminController(DonationServiceImpl donationService, UserServiceImpl userService) {
         this.donationService = donationService;
+        this.userService = userService;
     }
 
     @GetMapping("/panel")
@@ -26,10 +28,24 @@ public class SuperAdminController {
     }
 
     @GetMapping("/donation-list")
-    public String donationList(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
+    public String donationList(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
         model.addAttribute("donationList", donationService.findAll());
         User user = currentUser.getUser();
         model.addAttribute("user", user);
         return "/admin/donations";
+    }
+
+    @GetMapping("/edit-mail/{id}")
+    public String editMail(@AuthenticationPrincipal CurrentUser currentUser, Model model, @PathVariable long id){
+        model.addAttribute("admin", userService.getOne(id));
+        User user = currentUser.getUser();
+        model.addAttribute("user",user);
+        return"/admin/edit-mail-form";
+    }
+
+    @PostMapping("/edit-mail")
+    public String updateMail(@ModelAttribute("admin") User admin) {
+        userService.changeSuperAdminMail(admin);
+        return "redirect:/admin/admin-list";
     }
 }

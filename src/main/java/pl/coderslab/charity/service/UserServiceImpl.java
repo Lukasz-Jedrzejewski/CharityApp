@@ -127,4 +127,15 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
         }
     }
+
+    @Override
+    public void changeSuperAdminMail(User user) {
+        User userDb = userRepository.getOne(user.getId());
+        user.setFirstName(userDb.getFirstName());
+        user.setLastName(userDb.getLastName());
+        user.setEnabled(userDb.isEnabled());
+        user.setRoles(userDb.getRoles());
+        user.setPassword(userDb.getPassword());
+        userRepository.save(user);
+    }
 }

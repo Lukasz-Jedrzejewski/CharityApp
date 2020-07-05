@@ -1,17 +1,17 @@
 package pl.coderslab.charity.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
+import pl.coderslab.charity.service.DonationServiceImpl;
 import pl.coderslab.charity.service.RoleServiceImpl;
 import pl.coderslab.charity.service.UserServiceImpl;
+import pl.coderslab.charity.service.VerificationTokenServiceImpl;
 
-import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -20,10 +20,14 @@ public class AdminController {
 
     private final UserServiceImpl userService;
     private final RoleServiceImpl roleService;
+    private final DonationServiceImpl donationService;
+    private final VerificationTokenServiceImpl verificationTokenService;
 
-    public AdminController(UserServiceImpl userService, RoleServiceImpl roleService) {
+    public AdminController(UserServiceImpl userService, RoleServiceImpl roleService, DonationServiceImpl donationService, VerificationTokenServiceImpl verificationTokenService) {
         this.userService = userService;
         this.roleService = roleService;
+        this.donationService = donationService;
+        this.verificationTokenService = verificationTokenService;
     }
 
     @GetMapping("/admin-list")
@@ -83,6 +87,8 @@ public class AdminController {
 
     @GetMapping("/user-delete/{id}")
     public String userDelete(@PathVariable long id) {
+        verificationTokenService.deleteByUserId(id);
+        donationService.changeUserIdToNull(id);
         roleService.deleteByUserId(id);
         userService.delete(id);
         return "redirect:/admin/user-list";
