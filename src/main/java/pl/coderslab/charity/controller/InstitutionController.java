@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
+import pl.coderslab.charity.service.DonationServiceImpl;
 import pl.coderslab.charity.service.InstitutionServiceImpl;
 
 @Controller
@@ -14,9 +15,11 @@ import pl.coderslab.charity.service.InstitutionServiceImpl;
 public class InstitutionController {
 
     private final InstitutionServiceImpl institutionService;
+    private final DonationServiceImpl donationService;
 
-    public InstitutionController(InstitutionServiceImpl institutionService) {
+    public InstitutionController(InstitutionServiceImpl institutionService, DonationServiceImpl donationService) {
         this.institutionService = institutionService;
+        this.donationService = donationService;
     }
 
     @GetMapping("/institution-list")
@@ -29,6 +32,7 @@ public class InstitutionController {
 
     @GetMapping("/institution-delete/{id}")
     public String institutionDelete(@PathVariable long id) {
+        donationService.changeIdToNull(id);
         institutionService.delete(id);
         return "redirect:/admin/institution-list";
     }

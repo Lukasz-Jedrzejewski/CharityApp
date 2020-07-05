@@ -48,4 +48,9 @@ public class DonationServiceImpl implements DonationService {
     public List<Donation> findAll() {
         return donationRepository.findAll();
     }
+
+    @Override
+    public void changeIdToNull(long id) {
+        donationRepository.setInstitutionIdToNull(id);
+    }
 }

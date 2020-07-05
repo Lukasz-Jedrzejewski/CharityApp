@@ -20,6 +20,7 @@ public class Donation {
     @Convert(converter = LongToIntFunction.class)
     private List<Category> categories;
     @ManyToOne
+    @Convert(converter = LongToIntFunction.class)
     private Institution institution;
     private String street;
     private String city;

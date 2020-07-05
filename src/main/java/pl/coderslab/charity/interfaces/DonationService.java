@@ -11,4 +11,5 @@ public interface DonationService {
     List<Donation> findUserDonations(long id);
     Donation getOne(long id);
     List<Donation> findAll();
+    void changeIdToNull(long id);
 }
