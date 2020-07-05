@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.entity.VerificationToken;
+import pl.coderslab.charity.model.ContactMessage;
 import pl.coderslab.charity.model.UserModel;
 import pl.coderslab.charity.service.*;
 
@@ -32,7 +33,8 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String homeAction(){
+    public String homeAction(Model model){
+        model.addAttribute("contactMessage", new ContactMessage());
         return "index";
     }
 
@@ -90,4 +92,10 @@ public class HomeController {
         return "login";
     }
 
+    @PostMapping("/send-contact-message")
+    public String sendContactMessage(@ModelAttribute ContactMessage contactMessage) throws MessagingException {
+        String adminMail = userService.getOne(1).getEmail();
+        mailService.sendMsg(adminMail, "Skontaktuj się ze mną!", contactMessage.toHtml());
+        return "index";
+    }
 }
