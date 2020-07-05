@@ -9,7 +9,7 @@
             </sec:authorize>
             <ul class="dropdown">
                                     <li><a href="/admin/edit-mail/${user.id}">Zmień mail</a></li>
-                <%--                    <li><a href="/admin/administrators">Zarządzaj administratorami</a></li>--%>
+                                    <li><a href="/admin/edit-password/${user.id}">Zmień hasło</a></li>
                 <%--                    <li><a href="/admin/users">Zarządzaj użytkownikami</a></li>--%>
                 <li>
                     <nav>

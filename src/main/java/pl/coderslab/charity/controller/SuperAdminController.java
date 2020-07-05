@@ -48,4 +48,18 @@ public class SuperAdminController {
         userService.changeSuperAdminMail(admin);
         return "redirect:/admin/admin-list";
     }
+
+    @GetMapping("/edit-password/{id}")
+    public String editPassword(@AuthenticationPrincipal CurrentUser currentUser, Model model, @PathVariable long id) {
+        model.addAttribute("admin", userService.getOne(id));
+        User user = currentUser.getUser();
+        model.addAttribute("user", user);
+        return "/admin/change-password";
+    }
+
+    @PostMapping("/edit-password")
+    public String updatePassword(@ModelAttribute("admin") User admin) {
+        userService.changePass(admin);
+        return "redirect:/admin/admin-list";
+    }
 }
