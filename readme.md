@@ -1,12 +1,16 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
+Charity application
 
+The goal of the project is to create place where the user can donate unnecessary things to a charitable foundation.
 
-Przed przystąpieniem do pracy  przeczytaj poniższe wskazówki.
-## Jak zacząć?
+Technologies
 
-1. Zaimportuj projekt jako projekt `Maven`, wg poniższych wskazówek:
+    Java (v 14.0)
+    Spring Boot (v 2.1.4.)
+    MySQL
+    Lombok
+    Tomcat Server
 
-	* W `IntelliJ` wybieramy: `File –> New –> Project from Existing Sources...`
-	* Wskazujemy lokalizację katalogu ze sklonowanym projektem i zatwierdzamy.
-	* Następnie w nowym oknie wybieramy: `Import project from external model` i wskazujemy `Maven`
-	* Wybieramy kolejno opcje: `Next –> Next –> Next –> Finish`
+Sources
+
+This app is inspired by Magda (UX specialist). From Magda, I have HTML and CSS files, and above all idea to make this app to practice my skills.
+
