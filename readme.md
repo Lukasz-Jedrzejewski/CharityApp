@@ -5,10 +5,11 @@ The goal of the project is to create place where the user can donate unnecessary
 Technologies
 
     Java (v 14.0)
-    Spring Boot (v 2.1.4.)
+    Spring Boot 
+    Spring Data
+    Spring Security
     MySQL
-    Lombok
-    Tomcat Server
+    Hibernate
 
 Sources
 
