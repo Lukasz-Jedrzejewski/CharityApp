@@ -12,5 +12,5 @@ Technologies
 
 Sources
 
-This app is inspired by Magda (UX specialist). From Magda, I have HTML and CSS files, and above all idea to make this app to practice my skills.
+This app is inspired by Magda (UX specialist). From Magda, I have HTML and CSS files, and above all idea to make this app to practice my skill
 
