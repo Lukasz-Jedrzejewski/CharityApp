@@ -21,6 +21,36 @@
                     Opis fundacji: <form:textarea path="description"/>
                 </label>
             </div>
+            <div class="form-group form-group--inline">
+                <label>
+                    O nas: <form:input path="aboutUs"/>
+                </label>
+            </div>
+            <div class="form-group form-group--inline">
+                <label>
+                    Miasto: <form:input path="city"/>
+                </label>
+            </div>
+            <div class="form-group form-group--inline">
+                <label>
+                    Ulica: <form:input path="street"/>
+                </label>
+            </div>
+            <div class="form-group form-group--inline">
+                <label>
+                    Kod pocztowy: <form:input path="zipCode"/>
+                </label>
+            </div>
+            <div class="form-group form-group--inline">
+                <label>
+                    Email: <form:input path="mail"/>
+                </label>
+            </div>
+            <div class="form-group form-group--inline">
+                <label>
+                    Numer telefonu: <form:input path="phoneNumber"/>
+                </label>
+            </div>
             <div class="form-group form-group--buttons">
                 <button type="submit" class="btn">Potwierdzam</button>
             </div>
