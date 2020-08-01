@@ -98,4 +98,10 @@ public class HomeController {
         mailService.sendMsg(adminMail, "Skontaktuj się ze mną!", contactMessage.toHtml());
         return "index";
     }
+
+    @GetMapping("/institution-details/{id}")
+    public String getInstitutionDetails(@PathVariable Long id, Model model) {
+        model.addAttribute("currentInstitution", institutionService.getOne(id));
+        return "institution-details";
+    }
 }

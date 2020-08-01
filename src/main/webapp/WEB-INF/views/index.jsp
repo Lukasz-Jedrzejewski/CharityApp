@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pl">
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
@@ -26,7 +26,7 @@
     <div class="slogan container container--90">
         <div class="slogan--item">
             <h1>
-                Zacznij pomagać!<br />
+                Zacznij pomagać!<br/>
                 Oddaj niechciane rzeczy w zaufane ręce
             </h1>
         </div>
@@ -106,10 +106,11 @@
                 <c:forEach items="${institutions}" var="institution" varStatus="status">
                     <c:if test="${status.count %2 != 0}">
                         <br>
-                <div class="col">
-                    <div class="title">Fundacja ${institution.name}</div>
-                    <div class="subtitle">Cel i misja: ${institution.description}.</div>
-                </div>
+                        <div class="col">
+                            <div class="title">Fundacja ${institution.name}</div>
+                            <div class="subtitle">Cel i misja: ${institution.description}.</div>
+                            <div class="subtitle"><a href="/institution-details/${institution.id}" class="btn btn--without-border active" style="font-size: 10px;">Szczegóły</a></div>
+                        </div>
                     </c:if>
                 </c:forEach>
             </li>
@@ -118,10 +119,11 @@
                 <c:forEach items="${institutions}" var="institution" varStatus="status">
                     <c:if test="${status.count %2 == 0}">
                         <br>
-                <div class="col">
-                    <div class="title">Fundacja ${institution.name}</div>
-                    <div class="subtitle">Cel i misja: ${institution.description}.</div>
-                </div>
+                        <div class="col">
+                            <div class="title">Fundacja ${institution.name}</div>
+                            <div class="subtitle">Cel i misja: ${institution.description}.</div>
+                            <div class="subtitle"><a href="/institution-details/${institution.id}" class="btn btn--without-border active" style="font-size: 10px;">Szczegóły</a></div>
+                        </div>
                     </c:if>
                 </c:forEach>
             </li>
@@ -130,7 +132,7 @@
 
 </section>
 
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 
 
 </body>
