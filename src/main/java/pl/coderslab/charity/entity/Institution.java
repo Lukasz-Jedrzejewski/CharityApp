@@ -13,6 +13,7 @@ public class Institution {
     private String description;
     @OneToMany(mappedBy = "institution")
     private List<Donation> donations;
+    @Column(columnDefinition = "TEXT")
     private String aboutUs;
     private String city;
     private String street;
