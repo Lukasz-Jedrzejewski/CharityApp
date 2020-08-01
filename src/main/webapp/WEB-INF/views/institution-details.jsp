@@ -29,6 +29,12 @@
                 <div class="col">
                     <div class="title">Fundacja ${currentInstitution.name}</div>
                     <div class="subtitle">Cel i misja: ${currentInstitution.description}.</div>
+                    <div class="subtitle">O nas: ${currentInstitution.aboutUs}.</div>
+                    <div class="subtitle">Miasto: ${currentInstitution.city}.</div>
+                    <div class="subtitle">Ulica: ${currentInstitution.street}.</div>
+                    <div class="subtitle">Kod pocztowy: ${currentInstitution.zipCode}.</div>
+                    <div class="subtitle">Email: ${currentInstitution.mail}.</div>
+                    <div class="subtitle">Telefon: ${currentInstitution.phoneNumber}.</div>
                 </div>
             </li>
         </ul>
