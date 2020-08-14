@@ -9,7 +9,7 @@ import pl.coderslab.charity.fixture.InitData;
 @SpringBootApplication
 public class CharityApplication implements CommandLineRunner {
 
-    private InitData initData;
+    private final InitData initData;
 
     public CharityApplication(InitData initData) {
         this.initData = initData;
@@ -20,7 +20,7 @@ public class CharityApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         initData.init();
     }
 }

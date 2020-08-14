@@ -104,4 +104,9 @@ public class HomeController {
         model.addAttribute("currentInstitution", institutionService.getOne(id));
         return "institution-details";
     }
+
+    @GetMapping("/reset-pass")
+    public String resetPassword () {
+        return "reset";
+    }
 }

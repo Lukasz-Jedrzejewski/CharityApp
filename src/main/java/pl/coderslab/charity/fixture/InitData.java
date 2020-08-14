@@ -70,7 +70,7 @@ public class InitData {
                 "Excepteur sint occaecat cupidatat non proident, " +
                 "sunt in culpa qui officia deserunt mollit anim id est laborum.");
         institution1.setCity("Gdańsk");
-        institution1.setStreet("Dmowkiego 1");
+        institution1.setStreet("Romana Dmowkiego 1");
         institution1.setZipCode("11-111");
         institution1.setMail("All-for-children.mail.com");
         institution1.setPhoneNumber("111-111-111");
@@ -93,7 +93,7 @@ public class InitData {
                 "Ac odio tempor orci dapibus ultrices. " +
                 "Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt.");
         institution2.setCity("Lublin");
-        institution2.setStreet("Paderewskiego 2");
+        institution2.setStreet("Ignacego Paderewskiego 2");
         institution2.setZipCode("22-222");
         institution2.setMail("not-alone@mail.com");
         institution2.setPhoneNumber("222-222-222");
@@ -113,7 +113,7 @@ public class InitData {
                 "Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. " +
                 "Senectus et netus et malesuada fames ac turpis egestas.");
         institution3.setCity("Katowice");
-        institution3.setStreet("Narutowicza 3");
+        institution3.setStreet("Gabriela Narutowicza 3");
         institution3.setZipCode("33-333");
         institution3.setMail("4senior@mail.com");
         institution3.setPhoneNumber("333-333-333");
