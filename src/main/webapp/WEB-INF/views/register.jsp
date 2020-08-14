@@ -58,7 +58,6 @@
 </section>
 <script src="<c:url value="/resources/js/valid.js"/>"></script>
 
-<%@include file="footer.jsp"%>
 </body>
 </html>
 
