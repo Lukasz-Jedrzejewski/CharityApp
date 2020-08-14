@@ -7,10 +7,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.entity.PasswordResetToken;
-import pl.coderslab.charity.entity.VerificationToken;
 
 @Repository
-public interface PasswordResetTokenRepository extends JpaRepository<VerificationToken, Long> {
+public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long> {
     PasswordResetToken findByToken(String token);
 
     @Modifying
