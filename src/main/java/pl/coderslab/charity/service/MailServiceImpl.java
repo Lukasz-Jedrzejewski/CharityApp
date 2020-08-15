@@ -46,7 +46,7 @@ public class MailServiceImpl implements MailService {
         helper.setTo(recipient);
         helper.setSubject("Przywrócenie hasła");
         helper.setText("Abt zresetować hasło, kliknij w poniższy link: "
-                +"http://localhost:8080//reset-confirmation?token="+token);
+                +"http://localhost:8080/reset-confirmation?token="+token);
         javaMailSender.send(msg);
     }
 }

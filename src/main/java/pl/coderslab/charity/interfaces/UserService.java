@@ -19,5 +19,6 @@ public interface UserService {
     void changePass(User user);
     void save(User user);
     void changeSuperAdminMail(User user);
+    void resetPass(String email, String password);
 
 }

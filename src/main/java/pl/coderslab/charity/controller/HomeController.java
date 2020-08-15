@@ -123,5 +123,26 @@ public class HomeController {
         return "reset-info";
     }
 
+    @RequestMapping(value = "/reset-confirmation", method = {RequestMethod.GET, RequestMethod.POST})
+    public String confirmReset(@RequestParam("token") String passwordResetToken, Model model) {
+        PasswordResetToken token = passwordResetTokenService.findToken(passwordResetToken);
+        if (token != null) {
+            UserModel userModel = new UserModel();
+            userModel.setEmail(token.getUser().getEmail());
+            model.addAttribute("userModel", userModel);
+            return "/set-password";
+        } else {
+            return "/set-password-failed";
+        }
+    }
+
+    @PostMapping("/set-pass")
+    public String setPassword(@ModelAttribute UserModel userModel) {
+        if (userModel.getPassword2().equals(userModel.getPassword())) {
+            String email = userModel.getEmail();
+            userService.resetPass(email, userModel.getPassword());
+        }
+        return "password-changed-successfully";
+    }
 
 }
