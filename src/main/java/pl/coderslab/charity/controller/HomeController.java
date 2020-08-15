@@ -22,17 +22,17 @@ public class HomeController {
     private final UserServiceImpl userService;
     private final VerificationTokenServiceImpl verificationTokenService;
     private final MailServiceImpl mailService;
-    private final PasswordResetToken passwordResetToken;
+    private final PasswordResetTokenServiceImpl passwordResetTokenService;
 
     public HomeController(InstitutionServiceImpl institutionService,
                           DonationServiceImpl donationService, UserServiceImpl userService,
-                          VerificationTokenServiceImpl verificationTokenService, MailServiceImpl mailService, PasswordResetToken passwordResetToken) {
+                          VerificationTokenServiceImpl verificationTokenService, MailServiceImpl mailService, PasswordResetTokenServiceImpl passwordResetTokenService) {
         this.institutionService = institutionService;
         this.donationService = donationService;
         this.userService = userService;
         this.verificationTokenService = verificationTokenService;
         this.mailService = mailService;
-        this.passwordResetToken = passwordResetToken;
+        this.passwordResetTokenService = passwordResetTokenService;
     }
 
     @RequestMapping("/")
@@ -109,8 +109,18 @@ public class HomeController {
     }
 
     @GetMapping("/reset-pass")
-    public String resetPassword () {
+    public String resetPassword (Model model) {
+        model.addAttribute("userModel", new UserModel());
         return "reset";
+    }
+
+    @PostMapping("/reset-pass")
+    public String postReset (@ModelAttribute UserModel userModel) throws MessagingException {
+        String email = userModel.getEmail();
+        PasswordResetToken passwordResetToken = new PasswordResetToken(userService.findByMail(email));
+        passwordResetTokenService.save(passwordResetToken);
+        mailService.sendPasswordResetToken(userModel.getEmail(), passwordResetToken.getToken());
+        return "reset-info";
     }
 
 
