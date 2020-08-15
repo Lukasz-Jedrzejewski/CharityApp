@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Institution;
+import pl.coderslab.charity.entity.PasswordResetToken;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.entity.VerificationToken;
 import pl.coderslab.charity.model.ContactMessage;
@@ -21,15 +22,17 @@ public class HomeController {
     private final UserServiceImpl userService;
     private final VerificationTokenServiceImpl verificationTokenService;
     private final MailServiceImpl mailService;
+    private final PasswordResetToken passwordResetToken;
 
     public HomeController(InstitutionServiceImpl institutionService,
                           DonationServiceImpl donationService, UserServiceImpl userService,
-                          VerificationTokenServiceImpl verificationTokenService, MailServiceImpl mailService) {
+                          VerificationTokenServiceImpl verificationTokenService, MailServiceImpl mailService, PasswordResetToken passwordResetToken) {
         this.institutionService = institutionService;
         this.donationService = donationService;
         this.userService = userService;
         this.verificationTokenService = verificationTokenService;
         this.mailService = mailService;
+        this.passwordResetToken = passwordResetToken;
     }
 
     @RequestMapping("/")
@@ -109,4 +112,6 @@ public class HomeController {
     public String resetPassword () {
         return "reset";
     }
+
+
 }
