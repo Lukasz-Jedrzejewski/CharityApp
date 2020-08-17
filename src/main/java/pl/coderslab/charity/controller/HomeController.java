@@ -8,6 +8,7 @@ import pl.coderslab.charity.entity.PasswordResetToken;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.entity.VerificationToken;
 import pl.coderslab.charity.model.ContactMessage;
+import pl.coderslab.charity.model.Point;
 import pl.coderslab.charity.model.UserModel;
 import pl.coderslab.charity.service.*;
 
@@ -104,6 +105,7 @@ public class HomeController {
 
     @GetMapping("/institution-details/{id}")
     public String getInstitutionDetails(@PathVariable Long id, Model model) {
+        model.addAttribute("point", new Point(52.41, 16.92, "Hello world"));
         model.addAttribute("currentInstitution", institutionService.getOne(id));
         return "institution-details";
     }
