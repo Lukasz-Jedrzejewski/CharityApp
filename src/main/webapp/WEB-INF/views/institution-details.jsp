@@ -53,14 +53,14 @@
 
         <script>
 
-            var map = L.map('mapid').setView([${point.lat}, ${point.lon}], 18);
+            var map = L.map('mapid').setView([${cords.lat}, ${cords.lng}], 18);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            L.marker([${point.lat}, ${point.lon}]).addTo(map)
-                .bindPopup("${point.message}")
+            L.marker([${cords.lat}, ${cords.lng}]).addTo(map)
+                .bindPopup("Tu jesteśmy")
                 .openPopup();
 
         </script>
