@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <%@include file="header.jsp" %>
+
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
@@ -15,12 +16,13 @@
 
         <ul>
             <li><a href="/" class="btn btn--without-border active">Start</a></li>
-            <li><a href="#steps" class="btn btn--without-border">O co chodzi?</a></li>
+            <li><a href="#steps--container" class="btn btn--without-border" id="stepsScroll">O co chodzi?</a></li>
             <li><a href="#about-us" class="btn btn--without-border">O nas</a></li>
             <li><a href="#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
             <li><a href="/donate/get" class="btn btn--without-border">Przekaż dary</a></li>
             <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
+
     </nav>
 
     <div class="slogan container container--90">
@@ -134,6 +136,7 @@
 
 <%@include file="footer.jsp" %>
 
-
+<script src="<c:url value="/resources/js/menu.js"/>"></script>
 </body>
+
 </html>
