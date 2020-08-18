@@ -1,5 +1,6 @@
 package pl.coderslab.charity.controller;
 
+import com.byteowls.jopencage.model.JOpenCageLatLng;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,11 +9,11 @@ import pl.coderslab.charity.entity.PasswordResetToken;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.entity.VerificationToken;
 import pl.coderslab.charity.model.ContactMessage;
-import pl.coderslab.charity.model.Point;
 import pl.coderslab.charity.model.UserModel;
 import pl.coderslab.charity.service.*;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -24,16 +25,18 @@ public class HomeController {
     private final VerificationTokenServiceImpl verificationTokenService;
     private final MailServiceImpl mailService;
     private final PasswordResetTokenServiceImpl passwordResetTokenService;
+    private final CoordinatesServiceImpl coordinatesService;
 
     public HomeController(InstitutionServiceImpl institutionService,
                           DonationServiceImpl donationService, UserServiceImpl userService,
-                          VerificationTokenServiceImpl verificationTokenService, MailServiceImpl mailService, PasswordResetTokenServiceImpl passwordResetTokenService) {
+                          VerificationTokenServiceImpl verificationTokenService, MailServiceImpl mailService, PasswordResetTokenServiceImpl passwordResetTokenService, CoordinatesServiceImpl coordinatesService) {
         this.institutionService = institutionService;
         this.donationService = donationService;
         this.userService = userService;
         this.verificationTokenService = verificationTokenService;
         this.mailService = mailService;
         this.passwordResetTokenService = passwordResetTokenService;
+        this.coordinatesService = coordinatesService;
     }
 
     @RequestMapping("/")
@@ -104,9 +107,12 @@ public class HomeController {
     }
 
     @GetMapping("/institution-details/{id}")
-    public String getInstitutionDetails(@PathVariable Long id, Model model) {
-        model.addAttribute("point", new Point(52.41, 16.92, "Hello world"));
+    public String getInstitutionDetails(@PathVariable Long id, Model model) throws IOException {
         model.addAttribute("currentInstitution", institutionService.getOne(id));
+        String street = institutionService.getOne(id).getStreet();
+        String city = institutionService.getOne(id).getCity();
+        JOpenCageLatLng data = coordinatesService.getData(street, city);
+        model.addAttribute("cords", data);
         return "institution-details";
     }
 
