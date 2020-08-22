@@ -5,10 +5,10 @@ import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.User;
-import pl.coderslab.charity.service.CategoryServiceImpl;
-import pl.coderslab.charity.service.InstitutionServiceImpl;
-import pl.coderslab.charity.service.RoleServiceImpl;
-import pl.coderslab.charity.service.UserServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.CategoryServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.InstitutionServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.RoleServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.UserServiceImpl;
 
 @Service
 public class InitData {

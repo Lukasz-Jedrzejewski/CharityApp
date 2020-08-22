@@ -9,10 +9,10 @@ import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
-import pl.coderslab.charity.service.CategoryServiceImpl;
-import pl.coderslab.charity.service.DonationServiceImpl;
-import pl.coderslab.charity.service.InstitutionServiceImpl;
-import pl.coderslab.charity.service.UserServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.CategoryServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.DonationServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.InstitutionServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.UserServiceImpl;
 
 import java.util.List;
 

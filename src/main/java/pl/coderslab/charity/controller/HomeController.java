@@ -10,7 +10,7 @@ import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.entity.VerificationToken;
 import pl.coderslab.charity.model.ContactMessage;
 import pl.coderslab.charity.model.UserModel;
-import pl.coderslab.charity.service.*;
+import pl.coderslab.charity.service.serviceImpl.*;
 
 import javax.mail.MessagingException;
 import java.io.IOException;

@@ -12,7 +12,7 @@ import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
-import pl.coderslab.charity.service.*;
+import pl.coderslab.charity.service.serviceImpl.*;
 
 import javax.mail.MessagingException;
 import java.util.List;

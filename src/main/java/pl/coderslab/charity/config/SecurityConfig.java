@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import pl.coderslab.charity.service.SpringDataUserDetailsService;
+import pl.coderslab.charity.service.serviceImpl.SpringDataUserDetailsService;
 
 @Configuration
 @EnableWebSecurity

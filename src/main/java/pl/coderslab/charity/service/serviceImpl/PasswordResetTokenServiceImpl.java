@@ -1,8 +1,8 @@
-package pl.coderslab.charity.service;
+package pl.coderslab.charity.service.serviceImpl;
 
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entity.PasswordResetToken;
-import pl.coderslab.charity.interfaces.PasswordResetTokenService;
+import pl.coderslab.charity.service.PasswordResetTokenService;
 import pl.coderslab.charity.repository.PasswordResetTokenRepository;
 
 @Service

@@ -1,11 +1,11 @@
-package pl.coderslab.charity.service;
+package pl.coderslab.charity.service.serviceImpl;
 
 import com.byteowls.jopencage.JOpenCageGeocoder;
 import com.byteowls.jopencage.model.JOpenCageForwardRequest;
 import com.byteowls.jopencage.model.JOpenCageLatLng;
 import com.byteowls.jopencage.model.JOpenCageResponse;
 import org.springframework.stereotype.Service;
-import pl.coderslab.charity.interfaces.CoordinatesService;
+import pl.coderslab.charity.service.CoordinatesService;
 
 @Service
 public class CoordinatesServiceImpl implements CoordinatesService {

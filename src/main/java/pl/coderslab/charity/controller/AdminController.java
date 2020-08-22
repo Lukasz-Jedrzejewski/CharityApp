@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
-import pl.coderslab.charity.service.DonationServiceImpl;
-import pl.coderslab.charity.service.RoleServiceImpl;
-import pl.coderslab.charity.service.UserServiceImpl;
-import pl.coderslab.charity.service.VerificationTokenServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.DonationServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.RoleServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.UserServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.VerificationTokenServiceImpl;
 
 import java.util.Set;
 

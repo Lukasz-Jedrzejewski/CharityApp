@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.model.CurrentUser;
-import pl.coderslab.charity.service.CategoryServiceImpl;
+import pl.coderslab.charity.service.serviceImpl.CategoryServiceImpl;
 
 @Controller
 @RequestMapping("/admin")

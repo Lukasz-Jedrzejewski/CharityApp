@@ -1,8 +1,8 @@
-package pl.coderslab.charity.service;
+package pl.coderslab.charity.service.serviceImpl;
 
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entity.VerificationToken;
-import pl.coderslab.charity.interfaces.VerificationTokenService;
+import pl.coderslab.charity.service.VerificationTokenService;
 import pl.coderslab.charity.repository.VerificationTokenRepository;
 
 @Service

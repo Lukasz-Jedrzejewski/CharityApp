@@ -1,7 +1,7 @@
-package pl.coderslab.charity.service;
+package pl.coderslab.charity.service.serviceImpl;
 
 import pl.coderslab.charity.entity.Role;
-import pl.coderslab.charity.interfaces.RoleService;
+import pl.coderslab.charity.service.RoleService;
 import pl.coderslab.charity.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

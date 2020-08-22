@@ -1,4 +1,4 @@
-package pl.coderslab.charity.interfaces;
+package pl.coderslab.charity.service;
 
 import com.byteowls.jopencage.model.JOpenCageLatLng;
 
