@@ -23,4 +23,16 @@ document.addEventListener("DOMContentLoaded", function() {
     {
         document.querySelector(".contact").scrollIntoView();
     });
+
+    if (location.hash === "#steps") {
+        document.querySelector(".steps").scrollIntoView();
+    } else if (location.hash === "#about-us"){
+        document.querySelector(".about-us").scrollIntoView();
+    } else if (location.hash === "#help") {
+        document.querySelector(".help").scrollIntoView();
+    } else if (location.hash === "#contact") {
+        document.querySelector(".contact").scrollIntoView();
+    } else {
+        console.log("Something went wrong");
+    }
 });
