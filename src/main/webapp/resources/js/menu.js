@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    /**
+     * centering the view in index file
+     */
+
     var steps = document.querySelector("#stepsScroll");
     steps.addEventListener("click", function ()
     {
@@ -23,6 +27,10 @@ document.addEventListener("DOMContentLoaded", function() {
     {
         document.querySelector(".contact").scrollIntoView();
     });
+
+    /**
+     * centering the view in header file
+     */
 
     if (location.hash === "#steps") {
         document.querySelector(".steps").scrollIntoView();
