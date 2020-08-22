@@ -153,9 +153,4 @@ public class HomeController {
         return "password-changed-successfully";
     }
 
-    @GetMapping("/steps")
-    public String getStepsView () {
-        return "index";
-    }
-
 }
